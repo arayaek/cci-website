@@ -60,7 +60,8 @@ header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;backgrou
 @media (max-width:520px){.brand .mark{width:60px;height:54px}.bar{height:76px}}
 footer .brand .mark{color:#fff}
 .brand .wm{display:flex;flex-direction:column;line-height:1}
-.brand .wm b{font:800 17px/1 var(--display);letter-spacing:.02em;color:var(--heading)}
+.brand .wm b{font:800 17px/1 var(--display);letter-spacing:.02em;color:var(--heading);white-space:nowrap}
+@media (max-width:400px){.brand .wm b{font-size:14.5px}.brand .wm small{font-size:9px;letter-spacing:.18em}.brand .mark{width:52px;height:47px}}
 .brand .wm b span{color:var(--green)}
 .brand .wm small{font:600 10px/1 var(--body);letter-spacing:.22em;color:var(--muted);margin-top:5px}
 .links{display:flex;align-items:center;gap:2px}
