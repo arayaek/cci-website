@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Concept website for Caustic Chemical Industries PLC - chlor-alkali products for Ethiopia, East Africa and beyond.">
+<meta name="description" content="Caustic Chemical Industries PLC - integrated chlor-alkali project in Semera, Afar, Ethiopia (concept website).">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <title>Caustic Chemical Industries</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,7 +70,7 @@ footer .brand .mark{color:#fff}
 .links a.cta{background:var(--blue);color:#fff;margin-left:8px}
 .links a.cta:hover{background:var(--blue-2);color:#fff}
 .menu-btn{display:none;background:var(--soft);border:1px solid var(--line);color:var(--heading);border-radius:10px;padding:9px 14px;font:700 14px var(--body);cursor:pointer}
-@media (max-width:940px){
+@media (max-width:1100px){
   .menu-btn{display:block}
   .links{display:none;position:absolute;top:100%;left:-16px;right:-16px;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:8px 16px 16px;box-shadow:var(--shadow)}
   .links.open{display:flex}
@@ -287,6 +287,35 @@ textarea{min-height:110px;resize:vertical}
 @media (max-width:820px){.contact{grid-template-columns:1fr}}
 @media (max-width:520px){form{grid-template-columns:1fr}}
 
+/* Site stage: set data-stage on .site-root to "project" (under development) or "operating" (company site).
+   Elements with class "proj" show only in project mode; class "op" only in operating mode. */
+.site-root[data-stage="project"] .op,.site-root[data-stage="operating"] .proj{display:none!important}
+.site-root[data-stage="project"] .ph.plan::after{content:"Illustrative";position:absolute;top:12px;left:12px;font:700 10.5px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;background:rgba(4,22,43,.72);color:#fff;padding:6px 9px;border-radius:999px}
+.live.proj i{background:var(--amber);animation-name:pulseA}
+@keyframes pulseA{0%{box-shadow:0 0 0 0 rgba(245,160,26,.7)}70%{box-shadow:0 0 0 10px rgba(245,160,26,0)}100%{box-shadow:0 0 0 0 rgba(245,160,26,0)}}
+
+/* project status */
+.phases{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface);margin-bottom:22px}
+.phase{padding:18px 20px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:6px;min-width:0}
+.phase:last-child{border-right:0}
+.phase .pn{font:700 11px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.phase b{font:700 17px/1.2 var(--display);color:var(--heading)}
+.phase span{font-size:13.5px;color:var(--muted)}
+.phase.now{background:var(--navy)}
+.phase.now b{color:#fff}.phase.now .pn{color:var(--lime)}.phase.now span{color:#C6D4E5}
+.phase.soon .pn{color:var(--blue)}
+@media (max-width:820px){.phases{grid-template-columns:1fr 1fr}.phase:nth-child(2){border-right:0}.phase:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+.ms-sum{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;font:600 13px var(--body);color:var(--muted)}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ms{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;grid-template-columns:96px 1fr;gap:3px 14px;align-items:start}
+.ms .st{grid-row:span 2;justify-self:start;font:700 10.5px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;padding:6px 9px;border-radius:999px;white-space:nowrap;margin-top:2px}
+.ms b{font:700 15.5px/1.3 var(--display);color:var(--heading)}
+.ms .d{font-size:13.5px;color:var(--muted)}
+.st.done{background:var(--green);color:#fff}.st.prog{background:var(--blue);color:#fff}.st.next{background:var(--lime);color:var(--on-lime)}.st.plan{background:var(--soft);color:var(--muted);border:1px solid var(--line)}
+.status-note{font-size:13.5px;color:var(--muted);margin-top:16px}
+@media (max-width:760px){.mgrid{grid-template-columns:1fr}}
+@media (max-width:420px){.ms{grid-template-columns:1fr}.ms .st{grid-row:auto}}
+
 footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:14px}
 .foot{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap}
 .foot .cols{display:flex;gap:56px;flex-wrap:wrap}
@@ -310,7 +339,10 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
   </symbol>
 </svg>
 
-<div class="concept"><b>CONCEPT WEBSITE</b> · for internal review · capacities, dates, locations and contacts are illustrative</div>
+<!-- To turn this into the operating-company site, change data-stage="project" to data-stage="operating". -->
+<div class="site-root" data-stage="project">
+
+<div class="concept"><b>CONCEPT WEBSITE</b> · for internal review · <span class="proj">project figures are planned and indicative</span><span class="op">figures, dates and contacts are illustrative</span></div>
 
 <header class="site">
   <div class="wrap bar">
@@ -320,12 +352,13 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
     </a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
     <nav class="links" id="navLinks">
-      <a href="#plant">Our plant</a>
+      <a class="proj" href="#status">Project status</a>
+      <a href="#plant"><span class="proj">The plant</span><span class="op">Our plant</span></a>
       <a href="#products">Products</a>
       <a href="#industries">Industries</a>
       <a href="#markets">Markets</a>
       <a href="#safety">Safety</a>
-      <a class="cta" href="#contact">Request a quote</a>
+      <a class="cta" href="#contact"><span class="proj">Partner with us</span><span class="op">Request a quote</span></a>
     </nav>
   </div>
 </header>
@@ -338,43 +371,74 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
   <div class="wrap hero-in">
     <div class="tag">LOCAL ROOTS.<br>GLOBAL AMBITION.</div>
     <div class="hero-copy">
-      <div class="eyebrow">Chlor-alkali · Ethiopia · East Africa</div>
-      <h1>The chemistry behind <em>East Africa's industry.</em></h1>
-      <p class="lede">Caustic Chemical Industries PLC runs a large-scale membrane chlor-alkali plant in Ethiopia. Each year we turn salt, water and clean hydropower into 200,000 tonnes of caustic soda, plus chlorine, acids and water-treatment chemicals for manufacturers across the region.</p>
+      <div class="eyebrow"><span class="proj">Integrated chlor-alkali project · Semera, Afar · Ethiopia</span><span class="op">Chlor-alkali · Ethiopia · East Africa</span></div>
+      <h1><span class="proj">Building the</span><span class="op">The</span> chemistry behind <em>East Africa's industry.</em></h1>
+      <p class="lede proj">Caustic Chemical Industries PLC is developing a USD 450 million integrated chlor-alkali plant in the Semera Industrial Zone, Afar Region. Using salt from Afdera, clean hydropower and membrane technology, it will produce 200,000 tonnes of caustic soda a year, plus chlorine, acids and water-treatment chemicals for Ethiopia and the region.</p>
+      <p class="lede op">Caustic Chemical Industries PLC runs a large-scale membrane chlor-alkali plant in Ethiopia. Each year we turn salt, water and clean hydropower into 200,000 tonnes of caustic soda, plus chlorine, acids and water-treatment chemicals for manufacturers across the region.</p>
       <div class="amh">ለኢንዱስትሪ መሠረት <span>THE FOUNDATION OF INDUSTRY</span></div>
       <div class="actions">
-        <a class="btn lime" href="#products">See our products →</a>
-        <a class="btn outline" href="#contact">Become a customer</a>
+        <a class="btn lime proj" href="#status">See project status →</a>
+        <a class="btn outline proj" href="#contact">Partner with us</a>
+        <a class="btn lime op" href="#products">See our products →</a>
+        <a class="btn outline op" href="#contact">Become a customer</a>
       </div>
-      <div class="live"><i></i>Plant in operation · 24 hours a day, 7 days a week</div>
+      <div class="live proj"><i></i>Project under development · development and financing phase</div>
+      <div class="live op"><i></i>Plant in operation · 24 hours a day, 7 days a week</div>
     </div>
   </div>
 </section>
-<div class="stats" aria-label="Key plant figures">
+<div class="stats proj" aria-label="Key project figures">
+  <div class="stat st1"><span class="n">USD 450M</span><span class="l">Planned total investment</span></div>
+  <div class="stat st2"><span class="n">200,000<small>t/yr</small></span><span class="l">Planned caustic soda capacity (100% basis)</span></div>
+  <div class="stat st3"><span class="n">80,000<small>t/yr</small></span><span class="l">Djibouti caustic soda offtake, being finalised</span></div>
+  <div class="stat st4"><span class="n">Semera</span><span class="l">Industrial Zone, Afar Region, on the Djibouti corridor</span></div>
+</div>
+<div class="stats op" aria-label="Key plant figures">
   <div class="stat st1"><span class="n">200,000<small>t/yr</small></span><span class="l">Caustic soda capacity (100% basis)</span></div>
   <div class="stat st2"><span class="n">177,000<small>t/yr</small></span><span class="l">Chlorine made alongside the caustic soda</span></div>
   <div class="stat st3"><span class="n">7</span><span class="l">Product lines from one integrated site</span></div>
   <div class="stat st4"><span class="n">6<small>countries</small></span><span class="l">Supplied from Ethiopia by road, rail and sea</span></div>
 </div>
 
+<section class="sec proj" id="status">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="eyebrow">Project status</div><h2>Where the project stands today.</h2></div>
+      <p>The project is in its development and financing phase. Site, government support and the core commercial arrangements are in place or being finalised. The next steps are selecting the EPC contractor and technology licensor and closing the financing.</p>
+    </div>
+    <div class="phases" aria-label="Project phases">
+      <div class="phase now"><span class="pn">Phase 1 · Now</span><b>Development</b><span>Site, approvals, salt supply, offtake</span></div>
+      <div class="phase now"><span class="pn">Phase 2 · Now</span><b>Financing &amp; engineering</b><span>Financing structure, studies, EPC and technology selection</span></div>
+      <div class="phase"><span class="pn">Phase 3</span><b>Construction</b><span>EPC delivery, equipment installation, recruitment and training</span></div>
+      <div class="phase"><span class="pn">Phase 4</span><b>Commissioning &amp; operation</b><span>Start-up, first production, ramp-up to full capacity</span></div>
+    </div>
+    <div class="ms-sum" id="msSum"></div>
+    <div class="mgrid" id="mgrid"></div>
+    <p class="status-note">Status as of October 2026. Timelines depend on financing, technical and legal due diligence, and approvals.</p>
+  </div>
+</section>
+
 <section class="sec" id="plant">
   <div class="wrap">
     <div class="head">
-      <div><div class="eyebrow">Our plant</div><h2>A world-class chlor-alkali complex, built in Ethiopia.</h2></div>
-      <p>The complex covers the whole process: brine purification, membrane electrolysis, evaporation and flaking, chlorine liquefaction, acid and hypochlorite units, a quality-control laboratory and a 24-hour control room. All of it sits on one site connected to the national grid.</p>
+      <div class="proj"><div class="eyebrow">The planned plant</div><h2>An integrated chlor-alkali complex for Ethiopia.</h2></div>
+      <p class="proj">The design covers the whole process: brine purification, membrane electrolysis, evaporation and flaking, chlorine liquefaction, acid, hypochlorite and coagulant units, a quality-control laboratory and a central control room. The plant will sit in the Semera Industrial Zone, on the main road corridor to Djibouti.</p>
+      <div class="op"><div class="eyebrow">Our plant</div><h2>A world-class chlor-alkali complex, built in Ethiopia.</h2></div>
+      <p class="op">The complex covers the whole process: brine purification, membrane electrolysis, evaporation and flaking, chlorine liquefaction, acid and hypochlorite units, a quality-control laboratory and a 24-hour control room. All of it sits on one site connected to the national grid.</p>
     </div>
     <div class="mosaic">
-      <figure class="ph a"><img src="img/piping.jpg" alt="Stainless-steel process piping and valves inside a chemical plant"><figcaption>Membrane cell house<small>Bipolar membrane electrolysers producing 32% caustic soda</small></figcaption></figure>
-      <figure class="ph b"><img src="img/vessels.jpg" alt="Process vessels and pipework" loading="lazy"><figcaption>Evaporation &amp; flaking<small>Concentration to 50% and 98% flakes</small></figcaption></figure>
-      <figure class="ph c"><img src="img/lab.jpg" alt="Gloved hand holding a glass laboratory beaker" loading="lazy"><figcaption>QC laboratory<small>A certificate of analysis for every batch</small></figcaption></figure>
-      <figure class="ph d"><img src="img/control.jpg" alt="Plant control room with operator desk and screens" loading="lazy"><figcaption>Central control room<small>Distributed control system and safety interlocks, staffed around the clock</small></figcaption></figure>
+      <figure class="plan ph a"><img src="img/piping.jpg" alt="Stainless-steel process piping and valves inside a chemical plant"><figcaption>Membrane cell house<small>Bipolar membrane electrolysers producing 32% caustic soda</small></figcaption></figure>
+      <figure class="plan ph b"><img src="img/vessels.jpg" alt="Process vessels and pipework" loading="lazy"><figcaption>Evaporation &amp; flaking<small>Concentration to 50% and 98% flakes</small></figcaption></figure>
+      <figure class="plan ph c"><img src="img/lab.jpg" alt="Gloved hand holding a glass laboratory beaker" loading="lazy"><figcaption>QC laboratory<small>A certificate of analysis for every batch</small></figcaption></figure>
+      <figure class="plan ph d"><img src="img/control.jpg" alt="Plant control room with operator desk and screens" loading="lazy"><figcaption>Central control room<small>Distributed control system and safety interlocks, staffed around the clock</small></figcaption></figure>
     </div>
     <div class="facts">
       <div><b>200,000 t</b><span>caustic soda per year, 100% basis</span></div>
       <div><b>~600 t/d</b><span>caustic soda per day</span></div>
       <div><b>~55 MW</b><span>electrolysis load, grid hydropower</span></div>
-      <div><b>~320,000 t</b><span>salt per year from the Afar region</span></div>
-      <div><b>2025</b><span>commissioned (illustrative)</span></div>
+      <div><b>~320,000 t</b><span>salt per year from Afdera, Afar</span></div>
+      <div class="proj"><b>Semera</b><span>Industrial Zone site, Afar Region</span></div>
+      <div class="op"><b>2025</b><span>commissioned (illustrative)</span></div>
     </div>
   </div>
 </section>
@@ -419,7 +483,7 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
       </div>
       <div>
         <ol class="steps">
-          <li><b>Brine preparation</b><span>We dissolve Afar salt and purify it to parts-per-billion hardness with ion-exchange resins.</span></li>
+          <li><b>Brine preparation</b><span>Salt from Afdera is dissolved and purified to parts-per-billion hardness with ion-exchange resins.</span></li>
           <li><b>Membrane electrolysis</b><span>Direct current splits the brine. Chlorine forms at the anode, and caustic soda and hydrogen form at the cathode.</span></li>
           <li><b>Caustic finishing</b><span>Evaporators concentrate the lye from 32% to 50%, and a flaker turns part of it into 98% flakes.</span></li>
           <li><b>Chlorine processing</b><span>Chlorine is dried, compressed and liquefied, or sent to the HCl, hypochlorite and coagulant units.</span></li>
@@ -439,8 +503,9 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
 <section class="sec" id="products">
   <div class="wrap">
     <div class="head">
-      <div><div class="eyebrow">Products</div><h2>Seven product lines. One reliable local supplier.</h2></div>
-      <p>We deliver in bulk tankers, IBCs, drums, bags and cylinders. Every shipment comes with a certificate of analysis and a safety data sheet. Capacities are nameplate figures per year.</p>
+      <div><div class="eyebrow"><span class="proj">Planned products</span><span class="op">Products</span></div><h2>Seven product lines. One reliable local supplier.</h2></div>
+      <p class="proj">The plant is designed to make seven product lines, delivered in bulk tankers, IBCs, drums, bags and cylinders. Capacities are planned nameplate figures per year and will be confirmed in the final design.</p>
+      <p class="op">We deliver in bulk tankers, IBCs, drums, bags and cylinders. Every shipment comes with a certificate of analysis and a safety data sheet. Capacities are nameplate figures per year.</p>
     </div>
     <div class="prods">
       <article class="prod c-lye"><div class="top"><div class="row"><span class="f">NaOH</span><span class="cap"><b>200k t</b>per year, total</span></div><span class="nm">Caustic Soda Lye</span></div>
@@ -457,7 +522,8 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
         <dl><dt>Grade</dt><dd>Poly-aluminium chloride and ferric chloride (40%)</dd><dt>Pack</dt><dd>25 kg bags, IBCs, tankers</dd><dt>For</dt><dd>Municipal water, effluent plants, industrial parks</dd></dl></article>
       <article class="prod c-h2"><div class="top"><div class="row"><span class="f">H<sub>2</sub></span><span class="cap"><b>5k t</b>per year</span></div><span class="nm">Hydrogen</span></div>
         <dl><dt>Grade</dt><dd>99.9%, compressed on request</dd><dt>Pack</dt><dd>Cylinder bundles, captive use</dd><dt>For</dt><dd>Oil hydrogenation, glass, labs, fuel cells</dd></dl></article>
-      <article class="prod more"><h3>Need a custom grade or a long-term supply contract?</h3><p>Our technical sales team can match the concentration, packaging and delivery schedule to your plant.</p><a class="btn lime" href="#contact">Talk to sales →</a></article>
+      <article class="prod more proj"><h3>Want supply from day one?</h3><p>We are agreeing long-term offtake ahead of start-up. Early offtakers can shape grades, packaging and delivery.</p><a class="btn lime" href="#contact">Discuss offtake →</a></article>
+      <article class="prod more op"><h3>Need a custom grade or a long-term supply contract?</h3><p>Our technical sales team can match the concentration, packaging and delivery schedule to your plant.</p><a class="btn lime" href="#contact">Talk to sales →</a></article>
     </div>
   </div>
 </section>
@@ -469,11 +535,11 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
       <p>Many industries in Ethiopia and the region import these chemicals today. Local supply cuts their costs and lead times and saves foreign currency.</p>
     </div>
     <div class="water">
-      <figure class="ph"><img src="img/water.jpg" alt="Aerial view of a water treatment plant's clarifier tanks" loading="lazy"></figure>
+      <figure class="ph plan"><img src="img/water.jpg" alt="Aerial view of a water treatment plant's clarifier tanks" loading="lazy"></figure>
       <div class="tx">
         <div class="eyebrow" style="color:var(--lime)">Featured · Water</div>
         <h3>Safe drinking water for a population of 130 million.</h3>
-        <p>Every water utility in the country needs disinfectants, coagulants and pH control. We make all three on one site and deliver them to Addis Ababa, regional towns and industrial parks.</p>
+        <p>Every water utility in the country needs disinfectants, coagulants and pH control. <span class="proj">The plant will make all three on one site, for Addis Ababa, regional towns and industrial parks.</span><span class="op">We make all three on one site and deliver them to Addis Ababa, regional towns and industrial parks.</span></p>
         <div class="pills"><span class="pill k-cl">Cl₂</span><span class="pill k-hypo">NaOCl</span><span class="pill k-coag">PAC</span><span class="pill k-naoh">NaOH</span></div>
       </div>
     </div>
@@ -494,7 +560,7 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
   <div class="wrap">
     <div class="head">
       <div><div class="eyebrow">Spotlight · PVC</div><h2>Our chlorine can anchor a PVC industry in Ethiopia.</h2></div>
-      <p>Pipes, cables, window frames and packaging are made from PVC, and the region imports most of its PVC resin today. About 57% of PVC by weight is chlorine. About 40,000 tonnes a year of our chlorine is available for a downstream partner, enough to supply a mid-sized PVC plant. We are looking for partners to build that vinyl chain with us.</p>
+      <p>Pipes, cables, window frames and packaging are made from PVC, and the region imports most of its PVC resin today. About 57% of PVC by weight is chlorine. About 40,000 tonnes a year of our chlorine <span class="proj">will be</span><span class="op">is</span> available for a downstream partner, enough to supply a mid-sized PVC plant. We are looking for partners to build that vinyl chain with us.</p>
     </div>
     <div class="pvc-grid">
       <figure class="ph"><img src="img/pvc.jpg" alt="Stacked PVC pipes" loading="lazy"><figcaption>Pipes for water, irrigation and housing</figcaption></figure>
@@ -521,36 +587,36 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
   <div class="wrap">
     <div class="head">
       <div><div class="eyebrow">Logistics &amp; markets</div><h2>From our gate to your plant, wherever it is in the region.</h2></div>
-      <p>We run our own fleet of chemical tankers. We use the Addis Ababa–Djibouti railway for containerised loads and ship through the Port of Djibouti to export markets.</p>
+      <p class="proj">Semera sits on the main highway between Addis Ababa and Djibouti. The plan is a dedicated chemical tanker fleet, road and rail links to Ethiopian customers, and exports through the ports of Djibouti.</p>
+      <p class="op">We run our own fleet of chemical tankers. We use the Addis Ababa–Djibouti railway for containerised loads and ship through the Port of Djibouti to export markets.</p>
     </div>
     <div class="logi">
-      <figure class="ph"><img src="img/tanker.jpg" alt="Stainless-steel chemical tanker trucks" loading="lazy"><figcaption>Dedicated tanker fleet<small>Stainless and rubber-lined, ADR-equipped</small></figcaption></figure>
-      <figure class="ph"><img src="img/rail.jpg" alt="Freight train hauling tank wagons" loading="lazy"><figcaption>Rail to Djibouti<small>ISO tanks and bagged flakes by rail</small></figcaption></figure>
-      <figure class="ph"><img src="img/port.jpg" alt="Container ship at port cranes" loading="lazy"><figcaption>Export by sea<small>Port of Djibouti to the Gulf and Indian Ocean</small></figcaption></figure>
+      <figure class="ph plan"><img src="img/tanker.jpg" alt="Stainless-steel chemical tanker trucks" loading="lazy"><figcaption>Dedicated tanker fleet<small>Stainless and rubber-lined, ADR-equipped</small></figcaption></figure>
+      <figure class="ph plan"><img src="img/rail.jpg" alt="Freight train hauling tank wagons" loading="lazy"><figcaption>Rail to Djibouti<small>ISO tanks and bagged flakes by rail</small></figcaption></figure>
+      <figure class="ph plan"><img src="img/port.jpg" alt="Container ship at port cranes" loading="lazy"><figcaption>Export by sea<small>Port of Djibouti to the Gulf and Indian Ocean</small></figcaption></figure>
     </div>
     <div class="mk">
       <div class="route">
-        <svg viewBox="0 0 560 330" role="img" aria-label="Routes from the plant: rail via Modjo and Dire Dawa to the Port of Djibouti; road corridors to Sudan, Somaliland, Kenya and South Sudan">
+        <svg viewBox="0 0 560 330" role="img" aria-label="Routes from the Semera plant: highway via the Galafi border crossing to the ports of Djibouti; road corridors to Addis Ababa, Sudan, Kenya and Somaliland">
           <line x1="70" y1="165" x2="490" y2="165" stroke="#1F6FEB" stroke-width="6" stroke-linecap="round"/>
           <path d="M70 165 C 140 165, 150 60, 230 60 H 490" fill="none" stroke="#1FB466" stroke-width="4" stroke-dasharray="2 9" stroke-linecap="round"/>
           <path d="M70 165 C 140 165, 150 270, 230 270 H 490" fill="none" stroke="#1FB466" stroke-width="4" stroke-dasharray="2 9" stroke-linecap="round"/>
           <circle cx="70" cy="165" r="24" fill="#D4F542" stroke="#0B2F5C" stroke-width="2"/>
           <text x="70" y="170" text-anchor="middle" font-size="12" style="fill:#0B2F5C;font-weight:800">CCI</text>
-          <text x="70" y="210" text-anchor="middle" font-size="12">Plant</text>
-          <circle cx="210" cy="165" r="9" fill="#1F6FEB"/><text x="210" y="195" text-anchor="middle" font-size="12">Modjo</text><text x="210" y="210" text-anchor="middle" font-size="10.5" class="sub">dry port</text>
-          <circle cx="350" cy="165" r="9" fill="#1F6FEB"/><text x="350" y="195" text-anchor="middle" font-size="12">Dire Dawa</text><text x="350" y="210" text-anchor="middle" font-size="10.5" class="sub">rail</text>
-          <circle cx="490" cy="165" r="13" fill="#0B2F5C" stroke="#D4F542" stroke-width="3"/><text x="490" y="197" text-anchor="middle" font-size="12">Djibouti</text><text x="490" y="212" text-anchor="middle" font-size="10.5" class="sub">sea export</text>
-          <text x="280" y="152" text-anchor="middle" font-size="10.5" class="sub">Addis Ababa–Djibouti railway</text>
-          <circle cx="300" cy="60" r="7" fill="#1FB466"/><text x="300" y="42" text-anchor="middle" font-size="12">Metema → Sudan</text>
-          <circle cx="440" cy="60" r="7" fill="#1FB466"/><text x="440" y="42" text-anchor="middle" font-size="12">Togochale → Berbera</text>
+          <text x="70" y="210" text-anchor="middle" font-size="12">Semera</text><text x="70" y="225" text-anchor="middle" font-size="10.5" class="sub">plant site</text>
+          <circle cx="280" cy="165" r="9" fill="#1F6FEB"/><text x="280" y="195" text-anchor="middle" font-size="12">Galafi</text><text x="280" y="210" text-anchor="middle" font-size="10.5" class="sub">border crossing</text>
+          <circle cx="490" cy="165" r="13" fill="#0B2F5C" stroke="#D4F542" stroke-width="3"/><text x="490" y="197" text-anchor="middle" font-size="12">Djibouti</text><text x="490" y="212" text-anchor="middle" font-size="10.5" class="sub">ports, sea export</text>
+          <text x="380" y="152" text-anchor="middle" font-size="10.5" class="sub">Djibouti corridor highway</text>
+          <circle cx="300" cy="60" r="7" fill="#1FB466"/><text x="300" y="42" text-anchor="middle" font-size="12">Addis Ababa · Modjo</text>
+          <circle cx="440" cy="60" r="7" fill="#1FB466"/><text x="440" y="42" text-anchor="middle" font-size="12">Metema → Sudan</text>
           <circle cx="300" cy="270" r="7" fill="#1FB466"/><text x="300" y="298" text-anchor="middle" font-size="12">Moyale → Kenya</text>
-          <circle cx="440" cy="270" r="7" fill="#1FB466"/><text x="440" y="298" text-anchor="middle" font-size="12">Gambella → S. Sudan</text>
-          <text x="16" y="322" font-size="10.5" class="sub">━ rail and sea   ┅ road corridors   (schematic, not to scale)</text>
+          <circle cx="440" cy="270" r="7" fill="#1FB466"/><text x="440" y="298" text-anchor="middle" font-size="12">Togochale → Berbera</text>
+          <text x="16" y="322" font-size="10.5" class="sub">━ main export corridor   ┅ road corridors   (schematic, not to scale)</text>
         </svg>
       </div>
       <div>
         <div class="mrow"><b>Ethiopia</b><span>Industrial parks, utilities, sugar, textile and leather plants</span><em class="home">Home</em></div>
-        <div class="mrow"><b>Djibouti</b><span>Port, desalination and water treatment</span><em class="reg">Regional</em></div>
+        <div class="mrow"><b>Djibouti</b><span><span class="proj">About 80,000 t/yr caustic soda offtake being finalised</span><span class="op">Our largest export market: industry, ports and water treatment</span></span><em class="reg">Regional</em></div>
         <div class="mrow"><b>Kenya</b><span>Soap, detergent and water-treatment customers</span><em class="reg">Regional</em></div>
         <div class="mrow"><b>Sudan &amp; South Sudan</b><span>Sugar, oil, mining and municipal water</span><em class="reg">Regional</em></div>
         <div class="mrow"><b>Somalia &amp; Somaliland</b><span>Water, sanitation and food processing</span><em class="reg">Regional</em></div>
@@ -563,18 +629,19 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
 <section class="sec soft" id="safety">
   <div class="wrap">
     <div class="head">
-      <div><div class="eyebrow">Safety &amp; sustainability</div><h2>Safety comes first, and the power is clean.</h2></div>
-      <p>We handle chlorine and caustic soda to international codes. We train our people every year and run emergency plans with the surrounding community. Our electrolysis runs on Ethiopia's largely renewable grid.</p>
+      <div><div class="eyebrow">Safety &amp; sustainability</div><h2><span class="proj">Designed for safety, powered by clean energy.</span><span class="op">Safety comes first, and the power is clean.</span></h2></div>
+      <p class="proj">The plant is being designed to international codes for chlorine and caustic handling, with an environmental and social impact assessment and emergency planning together with the Semera community. Electrolysis will run on Ethiopia's largely renewable grid.</p>
+      <p class="op">We handle chlorine and caustic soda to international codes. We train our people every year and run emergency plans with the surrounding community. Our electrolysis runs on Ethiopia's largely renewable grid.</p>
     </div>
     <div class="safe">
-      <figure class="ph"><img src="img/ppe.jpg" alt="Hard hats and high-visibility vests hanging ready for use" loading="lazy"><figcaption>PPE on every shift<small>Chemical suits, face shields and respirators at each unit</small></figcaption></figure>
-      <figure class="ph"><img src="img/eyewash.jpg" alt="Emergency eyewash station" loading="lazy"><figcaption>Emergency stations<small>Safety showers and eyewash within 10 seconds of every hazard</small></figcaption></figure>
+      <figure class="ph plan"><img src="img/ppe.jpg" alt="Hard hats and high-visibility vests hanging ready for use" loading="lazy"><figcaption>PPE on every shift<small>Chemical suits, face shields and respirators at each unit</small></figcaption></figure>
+      <figure class="ph plan"><img src="img/eyewash.jpg" alt="Emergency eyewash station" loading="lazy"><figcaption>Emergency stations<small>Safety showers and eyewash within 10 seconds of every hazard</small></figcaption></figure>
       <div class="safe-list">
-        <div><span class="k">ISO</span><b>Certified management systems</b><span>9001 quality, 14001 environment and 45001 occupational health and safety</span></div>
-        <div><span class="k">24/7</span><b>Emergency response team</b><span>Chlorine emergency kits on site and on every tonner delivery</span></div>
+        <div><span class="k">ISO</span><b><span class="proj">Management systems from start-up</span><span class="op">Certified management systems</span></b><span><span class="proj">Designed to ISO </span>9001 quality, 14001 environment and 45001 occupational health and safety</span></div>
+        <div><span class="k">24/7</span><b>Emergency response team</b><span><span class="proj">Planned on site, with chlorine emergency kits for every delivery</span><span class="op">Chlorine emergency kits on site and on every tonner delivery</span></span></div>
         <div><span class="k">0 Hg</span><b>Mercury- and asbestos-free</b><span>Membrane cells are the best available technology</span></div>
         <div><span class="k">H₂O</span><b>Hydropower and recycled brine</b><span>Low-carbon power, depleted brine returned to the process, hydrogen reused as fuel</span></div>
-        <figure class="ph" style="min-height:150px"><img src="img/hazard.jpg" alt="Hazardous-chemical storage door with hazard diamond signage" loading="lazy"><figcaption>Hazard communication<small>GHS labelling and segregated storage</small></figcaption></figure>
+        <figure class="ph plan" style="min-height:150px"><img src="img/hazard.jpg" alt="Hazardous-chemical storage door with hazard diamond signage" loading="lazy"><figcaption>Hazard communication<small>GHS labelling and segregated storage</small></figcaption></figure>
       </div>
     </div>
   </div>
@@ -585,11 +652,19 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
   <div class="wrap">
     <div>
       <div class="eyebrow" style="color:var(--lime)">Partner with us</div>
-      <h2 style="margin-top:14px">Build your plant next to ours.</h2>
-      <p>We are looking for offtakers, distributors, investors and downstream manufacturers who want a reliable chemical supply in Ethiopia.</p>
+      <h2 style="margin-top:14px"><span class="proj">Help us build it.</span><span class="op">Build your plant next to ours.</span></h2>
+      <p class="proj">We are inviting engineering and construction firms, technology licensors, lenders, investors and future customers to join the project.</p>
+      <p class="op">We are looking for offtakers, distributors, investors and downstream manufacturers who want a reliable chemical supply in Ethiopia.</p>
       <div class="actions"><a class="btn lime" href="#contact">Talk to our team →</a></div>
     </div>
-    <ul>
+    <ul class="proj">
+      <li><b>Engineering &amp; EPC:</b> feasibility validation, FEED, EPC or project management</li>
+      <li><b>Technology:</b> ion-exchange membrane electrolysers and process licensing</li>
+      <li><b>Financing:</b> development finance, export credit agencies and commercial lenders</li>
+      <li><b>Equity &amp; offtake:</b> strategic investors and long-term buyers of caustic soda and chlorine</li>
+      <li><b>Downstream:</b> PVC, soap and coagulant plants co-located on our chlorine</li>
+    </ul>
+    <ul class="op">
       <li><b>Offtake:</b> long-term caustic soda and chlorine contracts</li>
       <li><b>Co-location:</b> PVC, soap and coagulant plants on our site</li>
       <li><b>Distribution:</b> regional partners in Kenya, Sudan and Djibouti</li>
@@ -601,19 +676,20 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
 <section class="sec" id="contact">
   <div class="wrap contact">
     <div class="info">
-      <div><div class="eyebrow">Contact</div><h2>Request a quote or a plant visit.</h2></div>
+      <div><div class="eyebrow">Contact</div><h2><span class="proj">Talk to the project team.</span><span class="op">Request a quote or a plant visit.</span></h2></div>
       <div><h4>Head office</h4><p>Addis Ababa, Ethiopia<br>[Street address]</p></div>
-      <div><h4>Plant</h4><p>[Industrial zone], Ethiopia</p></div>
-      <div><h4>Sales</h4><p><span id="mail">sales@[company-domain].et</span><button class="copy" data-copy="mail">Copy</button></p><p><span id="tel">+251 11 000 0000</span><button class="copy" data-copy="tel">Copy</button></p></div>
+      <div><h4><span class="proj">Project site</span><span class="op">Plant</span></h4><p>Semera Industrial Zone, Afar Region, Ethiopia</p></div>
+      <div><h4><span class="proj">Project office</span><span class="op">Sales</span></h4><p><span id="mail">info@[company-domain].et</span><button class="copy" data-copy="mail">Copy</button></p><p><span id="tel">+251 11 000 0000</span><button class="copy" data-copy="tel">Copy</button></p></div>
     </div>
     <form id="quote" novalidate>
       <label>Name<input id="f-name" placeholder="Full name"></label>
       <label>Company<input id="f-co" placeholder="Company name"></label>
       <label>Country<select id="f-country"><option>Ethiopia</option><option>Djibouti</option><option>Kenya</option><option>Sudan</option><option>South Sudan</option><option>Somalia / Somaliland</option><option>Other</option></select></label>
-      <label>Product<select id="f-prod"><option>Caustic soda lye</option><option>Caustic soda flakes</option><option>Liquid chlorine</option><option>Hydrochloric acid</option><option>Sodium hypochlorite</option><option>Coagulants (PAC / ferric)</option><option>Hydrogen</option><option>Partnership / investment</option></select></label>
-      <label class="full">Monthly volume and details<textarea id="f-msg" placeholder="e.g. 300 t/month caustic soda 48%, delivered to Hawassa Industrial Park"></textarea></label>
+      <label class="proj">Interest<select id="f-int"><option>EPC / engineering</option><option>Technology licensing</option><option>Financing</option><option>Equity investment</option><option>Offtake (future customer)</option><option>Downstream partnership</option><option>Salt supply</option><option>Careers</option><option>Other</option></select></label>
+      <label class="op">Product<select id="f-prod"><option>Caustic soda lye</option><option>Caustic soda flakes</option><option>Liquid chlorine</option><option>Hydrochloric acid</option><option>Sodium hypochlorite</option><option>Coagulants (PAC / ferric)</option><option>Hydrogen</option><option>Partnership / investment</option></select></label>
+      <label class="full">Message<textarea id="f-msg" placeholder="Tell us about your organisation and your interest in the project, or the product volumes you need"></textarea></label>
       <button class="btn blue full" type="submit" style="justify-self:start">Send request</button>
-      <div class="sent" id="sent" hidden>This is a concept site, so requests are not sent yet. On the live site this form will go to the sales team.</div>
+      <div class="sent" id="sent" hidden>This is a concept site, so messages are not sent yet. On the live site this form will go to our team.</div>
     </form>
   </div>
 </section>
@@ -628,17 +704,39 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
         <p style="font-family:var(--ethi);font-weight:700;color:#fff">ለኢንዱስትሪ መሠረት</p>
       </div>
       <div class="cols">
-        <div><h4>Company</h4><a href="#plant">Our plant</a><a href="#process">How it works</a><a href="#safety">Safety</a><a href="#contact">Careers</a></div>
+        <div><h4>Company</h4><a class="proj" href="#status">Project status</a><a href="#plant"><span class="proj">The plant</span><span class="op">Our plant</span></a><a href="#process">How it works</a><a href="#safety">Safety</a><a href="#contact">Careers</a></div>
         <div><h4>Products</h4><a href="#products">Caustic soda</a><a href="#products">Chlorine</a><a href="#products">Acids &amp; hypochlorite</a><a href="#products">Coagulants</a></div>
         <div><h4>Markets</h4><a href="#markets">Ethiopia</a><a href="#markets">Regional</a><a href="#markets">Export</a></div>
       </div>
     </div>
-    <div class="fine">© 2026 Caustic Chemical Industries PLC · Concept website for internal review. Capacities, dates, certifications, locations and contacts are placeholders. Hero image is an architectural rendering. Other photos are Unsplash stock images, to be replaced with photos of our own plant and team.</div>
+    <div class="fine">© 2026 Caustic Chemical Industries PLC · Concept website for internal review. <span class="proj">Project figures are planned and subject to feasibility, financing and approvals. Product splits and contacts are placeholders.</span><span class="op">Capacities, dates, certifications and contacts are placeholders.</span> Hero image is an architectural rendering. Other photos are Unsplash stock images, to be replaced with photos of our own plant and team.</div>
   </div>
 </footer>
+</div><!-- /.site-root -->
 
 <script>
 (function(){
+  // Project milestones: update status here. done | prog | next | plan
+  var MILESTONES=[
+    ['done','Company established','Caustic Chemical Industries PLC registered in Ethiopia'],
+    ['done','Government support','Institutional support from the Ministry of Industry'],
+    ['done','Site selected','Semera Industrial Zone, Afar Region'],
+    ['prog','Salt supply','Long-term supply arrangements for Afdera salt'],
+    ['prog','Djibouti offtake','About 80,000 t/yr of caustic soda, 40% of capacity, being finalised'],
+    ['prog','Financing','Financing structure and documentation, including the Commercial Bank of Ethiopia'],
+    ['prog','Technical and financial documentation','Updated studies and a detailed USD 450 million investment breakdown'],
+    ['next','EPC contractor and technology licensor','Selection of the engineering partner and membrane-cell technology'],
+    ['next','Management and technical team','Recruiting experienced chlor-alkali leadership and engineers'],
+    ['plan','Construction','Schedule being prepared with the EPC partner'],
+    ['plan','Commissioning and first production','Start-up and ramp-up to 200,000 t/yr']
+  ];
+  var LBL={done:'Done',prog:'In progress',next:'Next',plan:'Planned'};
+  var mg=document.getElementById('mgrid');
+  if(mg){
+    mg.innerHTML=MILESTONES.map(function(m){return '<div class="ms"><span class="st '+m[0]+'">'+LBL[m[0]]+'</span><b>'+m[1]+'</b><span class="d">'+m[2]+'</span></div>'}).join('');
+    var c={};MILESTONES.forEach(function(m){c[m[0]]=(c[m[0]]||0)+1});
+    document.getElementById('msSum').innerHTML=['done','prog','next','plan'].map(function(k){return '<span class="st '+k+'" style="font:700 11px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;padding:7px 10px;border-radius:999px">'+(c[k]||0)+' '+LBL[k]+'</span>'}).join('');
+  }
   var btn=document.getElementById('menuBtn'),links=document.getElementById('navLinks');
   btn.addEventListener('click',function(){var o=links.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
   links.addEventListener('click',function(e){if(e.target.tagName==='A'){links.classList.remove('open');btn.setAttribute('aria-expanded',false)}});
