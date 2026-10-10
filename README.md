@@ -1,4 +1,4 @@
-# Caustic Chemicals Industries PLC — concept website
+# Caustic Chemical Industries PLC — concept website
 
 Static concept site for internal review by the owners. Capacities, dates, certifications, locations and contacts are placeholders.
 
