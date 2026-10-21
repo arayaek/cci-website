@@ -1,14 +1,24 @@
-# Caustic Chemical Industries PLC — concept website
+# Cosotic Chemicals Industries PLC — website
 
-Static concept site for internal review by the owners. Capacities, dates, certifications, locations and contacts are placeholders.
+Static website (HTML, CSS and a little JavaScript) for the 200,000 t/yr chlor-alkali project in the Semera Industrial Zone, Afar, Ethiopia. Hosted with GitHub Pages from the `main` branch.
 
-- `index.html` — the whole site (HTML, CSS and JS in one file)
-- `img/` — hero rendering plus Unsplash stock photos (Unsplash License), to be replaced with real plant photos
+- `index.html` — the whole site
+- `img/` — hero rendering and illustrative photos (Unsplash and Pexels licences)
+- `video/` — four short hero background clips (Pexels licence)
+- `favicon.svg` — the logo mark
 
-Hosted with GitHub Pages from the `main` branch. Search-engine indexing is discouraged via `noindex` and `robots.txt`.
+## Common edits (near the top of the script at the bottom of `index.html`)
+
+| What | Where |
+| --- | --- |
+| Company name, used everywhere on the page | `var COMPANY = {...}` |
+| Address that receives contact-form messages | `var FORM_TO = '...'` |
+| Project milestones and their status (`done`, `prog`, `next`, `plan`) | `var MILESTONES = [...]` |
+
+## Contact form
+
+The form sends messages through [FormSubmit](https://formsubmit.co) to the `FORM_TO` address. The **first** submission triggers an activation email from FormSubmit to that address. Click **Activate Form** in it once; after that, messages are delivered normally.
 
 ## Project vs. operating-company mode
 
-The site currently presents the plant as **a project under development**. When the plant is operating, open `index.html`, find `data-stage="project"` (near the top of `<body>`) and change it to `data-stage="operating"`. Project-only content (class `proj`, e.g. the Project status section) hides and company content (class `op`) shows.
-
-Project milestones are a list named `MILESTONES` near the top of the script at the bottom of `index.html`; set each one's status to `done`, `prog`, `next` or `plan`.
+The site presents the plant as a project under development. When the plant is operating, change `data-stage="project"` to `data-stage="operating"` (near the top of `<body>`). Project-only content (class `proj`) hides and company content (class `op`) shows.
