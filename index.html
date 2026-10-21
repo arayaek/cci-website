@@ -3,10 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Caustic Chemical Industries PLC - integrated chlor-alkali project in Semera, Afar, Ethiopia (concept website).">
+<meta name="description" content="Cosotic Chemicals Industries PLC is building a 200,000 t/yr integrated chlor-alkali plant in the Semera Industrial Zone, Afar, Ethiopia.">
+<meta property="og:title" content="Cosotic Chemicals Industries PLC">
+<meta property="og:description" content="A 200,000 t/yr integrated chlor-alkali plant in Semera, Ethiopia, supplying Ethiopia and the region.">
+<meta property="og:image" content="img/plant-hero.webp">
+<meta property="og:type" content="website">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<title>Caustic Chemical Industries</title>
+<title>Cosotic Chemicals Industries PLC</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Noto+Sans+Ethiopic:wght@600;700&display=swap">
@@ -63,6 +66,7 @@ footer .brand .mark{color:#fff}
 .brand .wm b{font:800 17px/1 var(--display);letter-spacing:.02em;color:var(--heading);white-space:nowrap}
 @media (max-width:400px){.brand .wm b{font-size:14.5px}.brand .wm small{font-size:9px;letter-spacing:.18em}.brand .mark{width:48px;height:43px}}
 .brand .wm b span{color:var(--green)}
+.brand .wm b em{font-style:normal}
 .brand .wm small{font:600 10px/1 var(--body);letter-spacing:.22em;color:var(--muted);position:absolute;top:100%;left:0;margin-top:6px;white-space:nowrap}
 .links{display:flex;align-items:center;gap:2px}
 .links a{font:600 14.5px var(--body);padding:9px 13px;border-radius:9px;color:var(--ink)}
@@ -81,6 +85,11 @@ footer .brand .mark{color:#fff}
 /* hero */
 .hero{position:relative;color:#fff;background:var(--navy-3);overflow:hidden;isolation:isolate}
 .hero-img{position:absolute;inset:0;width:100%;height:100%;z-index:-2}
+.hero-vid{position:absolute;inset:0;z-index:-2;overflow:hidden}
+.hero-vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
+.hero-vid video.on{opacity:1}
+.vid-note{position:absolute;right:clamp(16px,4vw,40px);bottom:14px;font:600 10.5px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:#C6D4E5;opacity:0;transition:opacity .6s}
+.hero.has-video .vid-note{opacity:.85}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
   linear-gradient(90deg,rgba(4,22,43,.94) 0%,rgba(4,22,43,.78) 38%,rgba(4,22,43,.18) 72%,rgba(4,22,43,.05) 100%),
   linear-gradient(0deg,rgba(4,22,43,.9) 0%,rgba(4,22,43,0) 38%)}
@@ -283,6 +292,12 @@ form .full{grid-column:1 / -1}
 label{display:flex;flex-direction:column;gap:6px;font:600 13px var(--body);color:var(--heading)}
 input,select,textarea{font:400 15px var(--body);color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
 textarea{min-height:110px;resize:vertical}
+.req{color:var(--blue)}
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+.ferr{grid-column:1 / -1;background:color-mix(in srgb,var(--amber) 18%,var(--surface));border:1px solid var(--amber);color:var(--ink);border-radius:10px;padding:12px 14px;font-weight:500}
+.ferr a{color:inherit;font-weight:700}
+input:invalid[data-touched],textarea:invalid[data-touched]{border-color:var(--amber)}
+button.btn[disabled]{opacity:.6;cursor:progress}
 .sent{grid-column:1 / -1;background:var(--lime);color:var(--on-lime);border-radius:10px;padding:12px 14px;font-weight:500}
 @media (max-width:820px){.contact{grid-template-columns:1fr}}
 @media (max-width:520px){form{grid-template-columns:1fr}}
@@ -329,7 +344,7 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
 </head>
 <body>
 
-<!-- logo: "Orbit CC" — two nested Cs (Caustic Chemical) as electron orbits, with a lime electron leaving the atom -->
+<!-- logo: "Orbit CC" — two nested Cs (Cosotic Chemicals) as electron orbits, with a lime electron leaving the atom -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="logo" viewBox="0 0 100 90">
     <path d="M72.6 21.9A36 36 0 1 0 72.6 68.1" fill="none" stroke="#1F6FEB" stroke-width="13"/>
@@ -342,13 +357,12 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
 <!-- To turn this into the operating-company site, change data-stage="project" to data-stage="operating". -->
 <div class="site-root" data-stage="project">
 
-<div class="concept"><b>CONCEPT WEBSITE</b> · for internal review · <span class="proj">project figures are planned and indicative</span><span class="op">figures, dates and contacts are illustrative</span></div>
 
 <header class="site">
   <div class="wrap bar">
-    <a class="brand" href="#top" aria-label="Caustic Chemical Industries home">
+    <a class="brand" href="#top" aria-label="Cosotic Chemicals Industries home">
       <svg class="mark"><use href="#logo"/></svg>
-      <span class="wm"><b>CAUSTIC <span>CHEMICAL</span></b><small>INDUSTRIES PLC</small></span>
+      <span class="wm"><b><em data-co="w1">COSOTIC</em> <span data-co="w2">CHEMICALS</span></b><small data-co="w3">INDUSTRIES PLC</small></span>
     </a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
     <nav class="links" id="navLinks">
@@ -368,13 +382,20 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
   <svg class="hero-img" viewBox="0 100 921 594" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <image href="img/plant-hero.webp" x="0" y="0" width="921" height="769"/>
   </svg>
+  <div class="hero-vid" aria-hidden="true">
+    <video muted playsinline preload="none" data-src="video/hero-1-plant.mp4"></video>
+    <video muted playsinline preload="none" data-src="video/hero-2-production.mp4"></video>
+    <video muted playsinline preload="none" data-src="video/hero-3-lab.mp4"></video>
+    <video muted playsinline preload="none" data-src="video/hero-4-trucks.mp4"></video>
+  </div>
+  <span class="vid-note">Illustrative footage</span>
   <div class="wrap hero-in">
     <div class="tag">LOCAL ROOTS.<br>GLOBAL AMBITION.</div>
     <div class="hero-copy">
       <div class="eyebrow"><span class="proj">Integrated chlor-alkali project · Semera, Afar · Ethiopia</span><span class="op">Chlor-alkali · Ethiopia · East Africa</span></div>
       <h1><span class="proj">Building the</span><span class="op">The</span> chemistry behind <em>East Africa's industry.</em></h1>
-      <p class="lede proj">Caustic Chemical Industries PLC is developing a USD 450 million integrated chlor-alkali plant in the Semera Industrial Zone, Afar Region. Using salt from Afdera, clean hydropower and membrane technology, it will produce 200,000 tonnes of caustic soda a year, plus chlorine, acids and water-treatment chemicals for Ethiopia and the region.</p>
-      <p class="lede op">Caustic Chemical Industries PLC runs a large-scale membrane chlor-alkali plant in Ethiopia. Each year we turn salt, water and clean hydropower into 200,000 tonnes of caustic soda, plus chlorine, acids and water-treatment chemicals for manufacturers across the region.</p>
+      <p class="lede proj"><span data-co="full">Cosotic Chemicals Industries PLC</span> is building a <strong>200,000 tonne-a-year</strong> integrated chlor-alkali plant in the Semera Industrial Zone, Afar Region, about 200 km from the Port of Djibouti. Using salt from Lake Afdera and ion-exchange membrane technology, it will produce caustic soda, chlorine, hydrogen, hydrochloric acid and sodium hypochlorite for Ethiopia and the region.</p>
+      <p class="lede op"><span data-co="full">Cosotic Chemicals Industries PLC</span> runs a large-scale membrane chlor-alkali plant in Ethiopia. Each year we turn salt, water and clean hydropower into 200,000 tonnes of caustic soda, plus chlorine, acids and water-treatment chemicals for manufacturers across the region.</p>
       <div class="amh">ለኢንዱስትሪ መሠረት <span>THE FOUNDATION OF INDUSTRY</span></div>
       <div class="actions">
         <a class="btn lime proj" href="#status">See project status →</a>
@@ -382,21 +403,21 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
         <a class="btn lime op" href="#products">See our products →</a>
         <a class="btn outline op" href="#contact">Become a customer</a>
       </div>
-      <div class="live proj"><i></i>Project under development · development and financing phase</div>
+      <div class="live proj"><i></i>Project under development · financing and EPC selection under way</div>
       <div class="live op"><i></i>Plant in operation · 24 hours a day, 7 days a week</div>
     </div>
   </div>
 </section>
 <div class="stats proj" aria-label="Key project figures">
-  <div class="stat st1"><span class="n">USD 450M</span><span class="l">Planned total investment</span></div>
-  <div class="stat st2"><span class="n">200,000<small>t/yr</small></span><span class="l">Planned caustic soda capacity (100% basis)</span></div>
-  <div class="stat st3"><span class="n">80,000<small>t/yr</small></span><span class="l">Djibouti caustic soda offtake, being finalised</span></div>
-  <div class="stat st4"><span class="n">Semera</span><span class="l">Industrial Zone, Afar Region, on the Djibouti corridor</span></div>
+  <div class="stat st1"><span class="n">200,000<small>t/yr</small></span><span class="l">Caustic soda plant being built. Some units may be commissioned in phases.</span></div>
+  <div class="stat st2"><span class="n">USD 450M</span><span class="l">Total planned investment, including downstream factories</span></div>
+  <div class="stat st3"><span class="n">~200<small>km</small></span><span class="l">From the Port of Djibouti, for imports and exports</span></div>
+  <div class="stat st4"><span class="n">290M<small>t</small></span><span class="l">Estimated high-purity salt at Lake Afdera</span></div>
 </div>
 <div class="stats op" aria-label="Key plant figures">
   <div class="stat st1"><span class="n">200,000<small>t/yr</small></span><span class="l">Caustic soda capacity (100% basis)</span></div>
   <div class="stat st2"><span class="n">177,000<small>t/yr</small></span><span class="l">Chlorine made alongside the caustic soda</span></div>
-  <div class="stat st3"><span class="n">7</span><span class="l">Product lines from one integrated site</span></div>
+  <div class="stat st3"><span class="n">5</span><span class="l">Products from one integrated site</span></div>
   <div class="stat st4"><span class="n">6<small>countries</small></span><span class="l">Supplied from Ethiopia by road, rail and sea</span></div>
 </div>
 
@@ -404,17 +425,17 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
   <div class="wrap">
     <div class="head">
       <div><div class="eyebrow">Project status</div><h2>Where the project stands today.</h2></div>
-      <p>The project is in its development and financing phase. Site, government support and the core commercial arrangements are in place or being finalised. The next steps are selecting the EPC contractor and technology licensor and closing the financing.</p>
+      <p>Feasibility, environmental and site studies are complete, and the government, market and salt-supply agreements are signed. Financing and selection of the EPC contractor and technology licensor are now under way, with start-up targeted for about 2029.</p>
     </div>
     <div class="phases" aria-label="Project phases">
-      <div class="phase now"><span class="pn">Phase 1 · Now</span><b>Development</b><span>Site, approvals, salt supply, offtake</span></div>
-      <div class="phase now"><span class="pn">Phase 2 · Now</span><b>Financing &amp; engineering</b><span>Financing structure, studies, EPC and technology selection</span></div>
-      <div class="phase"><span class="pn">Phase 3</span><b>Construction</b><span>EPC delivery, equipment installation, recruitment and training</span></div>
-      <div class="phase"><span class="pn">Phase 4</span><b>Commissioning &amp; operation</b><span>Start-up, first production, ramp-up to full capacity</span></div>
+      <div class="phase"><span class="pn">Phase 1 · Done</span><b>Development</b><span>Feasibility study, EIA, site studies and key agreements</span></div>
+      <div class="phase now"><span class="pn">Phase 2 · Now</span><b>Financing &amp; EPC selection</b><span>Financing partners, EPC contractor and technology licensor</span></div>
+      <div class="phase soon"><span class="pn">Phase 3 · From 2027</span><b>Engineering &amp; construction</b><span>Basic engineering from Q1 2027, then about 24 months to build and commission</span></div>
+      <div class="phase"><span class="pn">Phase 4 · About 2029</span><b>Start-up &amp; ramp-up</b><span>First production, then ramp-up to 200,000 t/yr; some units commissioned in phases</span></div>
     </div>
     <div class="ms-sum" id="msSum"></div>
     <div class="mgrid" id="mgrid"></div>
-    <p class="status-note">Status as of October 2026. Timelines depend on financing, technical and legal due diligence, and approvals.</p>
+    <p class="status-note">Status as of October 2026. Dates are targets and depend on financing and approvals.</p>
   </div>
 </section>
 
@@ -422,23 +443,23 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
   <div class="wrap">
     <div class="head">
       <div class="proj"><div class="eyebrow">The planned plant</div><h2>An integrated chlor-alkali complex for Ethiopia.</h2></div>
-      <p class="proj">The design covers the whole process: brine purification, membrane electrolysis, evaporation and flaking, chlorine liquefaction, acid, hypochlorite and coagulant units, a quality-control laboratory and a central control room. The plant will sit in the Semera Industrial Zone, on the main road corridor to Djibouti.</p>
+      <p class="proj">The design covers the whole process: brine purification, membrane electrolysis, evaporation and flaking, chlorine liquefaction, hydrochloric acid and hypochlorite units, a quality-control laboratory and a central control room. The wider development adds downstream factories, such as soap and detergent plants, on the same site in the Semera Industrial Zone.</p>
       <div class="op"><div class="eyebrow">Our plant</div><h2>A world-class chlor-alkali complex, built in Ethiopia.</h2></div>
       <p class="op">The complex covers the whole process: brine purification, membrane electrolysis, evaporation and flaking, chlorine liquefaction, acid and hypochlorite units, a quality-control laboratory and a 24-hour control room. All of it sits on one site connected to the national grid.</p>
     </div>
     <div class="mosaic">
       <figure class="plan ph a"><img src="img/piping.jpg" alt="Stainless-steel process piping and valves inside a chemical plant"><figcaption>Membrane cell house<small>Bipolar membrane electrolysers producing 32% caustic soda</small></figcaption></figure>
-      <figure class="plan ph b"><img src="img/vessels.jpg" alt="Process vessels and pipework" loading="lazy"><figcaption>Evaporation &amp; flaking<small>Concentration to 50% and 98% flakes</small></figcaption></figure>
+      <figure class="plan ph b"><img src="img/vessels.jpg" alt="Modern stainless-steel process vessel with pipework and valves" loading="lazy"><figcaption>Evaporation &amp; flaking<small>Concentration to 50% and 98% flakes</small></figcaption></figure>
       <figure class="plan ph c"><img src="img/lab.jpg" alt="Gloved hand holding a glass laboratory beaker" loading="lazy"><figcaption>QC laboratory<small>A certificate of analysis for every batch</small></figcaption></figure>
-      <figure class="plan ph d"><img src="img/control.jpg" alt="Plant control room with operator desk and screens" loading="lazy"><figcaption>Central control room<small>Distributed control system and safety interlocks, staffed around the clock</small></figcaption></figure>
+      <figure class="plan ph d"><img src="img/control.jpg" alt="Modern industrial control panel with touchscreen and emergency stop" loading="lazy"><figcaption>Process control<small>Distributed control system with automated safety interlocks</small></figcaption></figure>
     </div>
     <div class="facts">
-      <div><b>200,000 t</b><span>caustic soda per year, 100% basis</span></div>
-      <div><b>~600 t/d</b><span>caustic soda per day</span></div>
-      <div><b>~55 MW</b><span>electrolysis load, grid hydropower</span></div>
-      <div><b>~320,000 t</b><span>salt per year from Afdera, Afar</span></div>
-      <div class="proj"><b>Semera</b><span>Industrial Zone site, Afar Region</span></div>
-      <div class="op"><b>2025</b><span>commissioned (illustrative)</span></div>
+      <div><b>200,000 t</b><span>caustic soda per year at full capacity</span></div>
+      <div><b>~600 t/d</b><span>caustic soda per day; units may be commissioned in phases</span></div>
+      <div><b>~177,000 t</b><span>chlorine co-produced per year</span></div>
+      <div><b>~200 km</b><span>to the Port of Djibouti</span></div>
+      <div class="proj"><b>Semera</b><span>Industrial Zone, Afar Region</span></div>
+      <div class="op"><b>2029</b><span>start-up (illustrative)</span></div>
     </div>
   </div>
 </section>
@@ -446,7 +467,7 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
 <section class="sec soft" id="process">
   <div class="wrap">
     <div class="head">
-      <div><div class="eyebrow">How it works</div><h2>Salt, water, power. Then seven products.</h2></div>
+      <div><div class="eyebrow">How it works</div><h2>Salt, water, power. Then five products.</h2></div>
       <p>An ion-exchange membrane is the core of the plant. It lets only sodium ions pass, so chlorine forms on one side and pure caustic soda and hydrogen form on the other. The process uses no mercury and no asbestos.</p>
     </div>
     <div class="proc">
@@ -486,7 +507,7 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
           <li><b>Brine preparation</b><span>Salt from Afdera is dissolved and purified to parts-per-billion hardness with ion-exchange resins.</span></li>
           <li><b>Membrane electrolysis</b><span>Direct current splits the brine. Chlorine forms at the anode, and caustic soda and hydrogen form at the cathode.</span></li>
           <li><b>Caustic finishing</b><span>Evaporators concentrate the lye from 32% to 50%, and a flaker turns part of it into 98% flakes.</span></li>
-          <li><b>Chlorine processing</b><span>Chlorine is dried, compressed and liquefied, or sent to the HCl, hypochlorite and coagulant units.</span></li>
+          <li><b>Chlorine processing</b><span>Chlorine is dried, compressed and liquefied, or sent to the hydrochloric acid and hypochlorite units.</span></li>
           <li><b>Hydrogen recovery</b><span>Hydrogen goes into HCl synthesis and fuels the boilers. Nothing is vented as waste.</span></li>
         </ol>
         <div class="ecu">
@@ -503,24 +524,22 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
 <section class="sec" id="products">
   <div class="wrap">
     <div class="head">
-      <div><div class="eyebrow"><span class="proj">Planned products</span><span class="op">Products</span></div><h2>Seven product lines. One reliable local supplier.</h2></div>
-      <p class="proj">The plant is designed to make seven product lines, delivered in bulk tankers, IBCs, drums, bags and cylinders. Capacities are planned nameplate figures per year and will be confirmed in the final design.</p>
+      <div><div class="eyebrow"><span class="proj">Planned products</span><span class="op">Products</span></div><h2>Five products. One reliable local supplier.</h2></div>
+      <p class="proj">The plant is designed to make caustic soda (lye and flakes), chlorine, hydrogen, hydrochloric acid and sodium hypochlorite, delivered in bulk tankers, IBCs, drums, bags and cylinders. The split between products will be set in the final design.</p>
       <p class="op">We deliver in bulk tankers, IBCs, drums, bags and cylinders. Every shipment comes with a certificate of analysis and a safety data sheet. Capacities are nameplate figures per year.</p>
     </div>
     <div class="prods">
-      <article class="prod c-lye"><div class="top"><div class="row"><span class="f">NaOH</span><span class="cap"><b>200k t</b>per year, total</span></div><span class="nm">Caustic Soda Lye</span></div>
+      <article class="prod c-lye"><div class="top"><div class="row"><span class="f">NaOH</span><span class="cap"><b>200k t</b>per year, all caustic</span></div><span class="nm">Caustic Soda Lye</span></div>
         <dl><dt>Grade</dt><dd>32% and 48–50%, membrane grade, low chloride</dd><dt>Pack</dt><dd>Stainless road tankers, ISO tanks, IBCs</dd><dt>For</dt><dd>Soap, textiles, sugar, alumina, paper</dd></dl></article>
-      <article class="prod c-flk"><div class="top"><div class="row"><span class="f">NaOH</span><span class="cap"><b>60k t</b>per year</span></div><span class="nm">Caustic Soda Flakes</span></div>
+      <article class="prod c-flk"><div class="top"><div class="row"><span class="f">NaOH</span></div><span class="nm">Caustic Soda Flakes</span></div>
         <dl><dt>Grade</dt><dd>98–99% flakes</dd><dt>Pack</dt><dd>25 kg bags, 1 t jumbo bags</dd><dt>For</dt><dd>Export, detergents, food processing, small users</dd></dl></article>
-      <article class="prod c-cl"><div class="top"><div class="row"><span class="f">Cl<sub>2</sub></span><span class="cap"><b>60k t</b>per year</span></div><span class="nm">Liquid Chlorine</span></div>
+      <article class="prod c-cl"><div class="top"><div class="row"><span class="f">Cl<sub>2</sub></span><span class="cap"><b>177k t</b>chlorine per year</span></div><span class="nm">Liquid Chlorine</span></div>
         <dl><dt>Grade</dt><dd>99.5% min., dry liquefied</dd><dt>Pack</dt><dd>900 kg tonners, 50 kg cylinders</dd><dt>For</dt><dd>Water utilities, PVC, chemicals, pharma</dd></dl></article>
-      <article class="prod c-hcl"><div class="top"><div class="row"><span class="f">HCl</span><span class="cap"><b>150k t</b>per year</span></div><span class="nm">Hydrochloric Acid</span></div>
+      <article class="prod c-hcl"><div class="top"><div class="row"><span class="f">HCl</span></div><span class="nm">Hydrochloric Acid</span></div>
         <dl><dt>Grade</dt><dd>33% synthetic, technical and food grade</dd><dt>Pack</dt><dd>Rubber-lined tankers, IBCs, carboys</dd><dt>For</dt><dd>Sugar, leather, steel pickling, mining</dd></dl></article>
-      <article class="prod c-hypo"><div class="top"><div class="row"><span class="f">NaOCl</span><span class="cap"><b>100k t</b>per year</span></div><span class="nm">Sodium Hypochlorite</span></div>
+      <article class="prod c-hypo"><div class="top"><div class="row"><span class="f">NaOCl</span></div><span class="nm">Sodium Hypochlorite</span></div>
         <dl><dt>Grade</dt><dd>10–12% available chlorine</dd><dt>Pack</dt><dd>Tankers, IBCs, 20 L jerrycans</dd><dt>For</dt><dd>Drinking water, hospitals, bleach, textiles</dd></dl></article>
-      <article class="prod c-coag"><div class="top"><div class="row"><span class="f">PAC</span><span class="cap"><b>50k t</b>per year</span></div><span class="nm">Water-Treatment Coagulants</span></div>
-        <dl><dt>Grade</dt><dd>Poly-aluminium chloride and ferric chloride (40%)</dd><dt>Pack</dt><dd>25 kg bags, IBCs, tankers</dd><dt>For</dt><dd>Municipal water, effluent plants, industrial parks</dd></dl></article>
-      <article class="prod c-h2"><div class="top"><div class="row"><span class="f">H<sub>2</sub></span><span class="cap"><b>5k t</b>per year</span></div><span class="nm">Hydrogen</span></div>
+      <article class="prod c-h2"><div class="top"><div class="row"><span class="f">H<sub>2</sub></span></div><span class="nm">Hydrogen</span></div>
         <dl><dt>Grade</dt><dd>99.9%, compressed on request</dd><dt>Pack</dt><dd>Cylinder bundles, captive use</dd><dt>For</dt><dd>Oil hydrogenation, glass, labs, fuel cells</dd></dl></article>
       <article class="prod more proj"><h3>Want supply from day one?</h3><p>We are agreeing long-term offtake ahead of start-up. Early offtakers can shape grades, packaging and delivery.</p><a class="btn lime" href="#contact">Discuss offtake →</a></article>
       <article class="prod more op"><h3>Need a custom grade or a long-term supply contract?</h3><p>Our technical sales team can match the concentration, packaging and delivery schedule to your plant.</p><a class="btn lime" href="#contact">Talk to sales →</a></article>
@@ -539,8 +558,8 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
       <div class="tx">
         <div class="eyebrow" style="color:var(--lime)">Featured · Water</div>
         <h3>Safe drinking water for a population of 130 million.</h3>
-        <p>Every water utility in the country needs disinfectants, coagulants and pH control. <span class="proj">The plant will make all three on one site, for Addis Ababa, regional towns and industrial parks.</span><span class="op">We make all three on one site and deliver them to Addis Ababa, regional towns and industrial parks.</span></p>
-        <div class="pills"><span class="pill k-cl">Cl₂</span><span class="pill k-hypo">NaOCl</span><span class="pill k-coag">PAC</span><span class="pill k-naoh">NaOH</span></div>
+        <p>Every water utility in the country needs disinfectants and pH control. <span class="proj">The plant will make chlorine, sodium hypochlorite and caustic soda on one site, for Addis Ababa, regional towns and industrial parks.</span><span class="op">We make chlorine, sodium hypochlorite and caustic soda on one site and deliver them to Addis Ababa, regional towns and industrial parks.</span></p>
+        <div class="pills"><span class="pill k-cl">Cl₂</span><span class="pill k-hypo">NaOCl</span><span class="pill k-naoh">NaOH</span></div>
       </div>
     </div>
     <div class="chips" role="group" aria-label="Filter industries by product">
@@ -549,7 +568,6 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
       <button class="chip" data-f="cl" aria-pressed="false"><i class="k-cl"></i>Chlorine</button>
       <button class="chip" data-f="hcl" aria-pressed="false"><i class="k-hcl"></i>Hydrochloric acid</button>
       <button class="chip" data-f="hypo" aria-pressed="false"><i class="k-hypo"></i>Hypochlorite</button>
-      <button class="chip" data-f="coag" aria-pressed="false"><i class="k-coag"></i>Coagulants</button>
       <button class="chip" data-f="h2" aria-pressed="false"><i class="k-h2"></i>Hydrogen</button>
     </div>
     <div class="igrid" id="igrid"></div>
@@ -560,7 +578,7 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
   <div class="wrap">
     <div class="head">
       <div><div class="eyebrow">Spotlight · PVC</div><h2>Our chlorine can anchor a PVC industry in Ethiopia.</h2></div>
-      <p>Pipes, cables, window frames and packaging are made from PVC, and the region imports most of its PVC resin today. About 57% of PVC by weight is chlorine. About 40,000 tonnes a year of our chlorine <span class="proj">will be</span><span class="op">is</span> available for a downstream partner, enough to supply a mid-sized PVC plant. We are looking for partners to build that vinyl chain with us.</p>
+      <p>Pipes, cables, window frames and packaging are made from PVC, and the region imports most of its PVC resin today. About 57% of PVC by weight is chlorine. Part of our chlorine <span class="proj">will be</span><span class="op">is</span> available for downstream partners, and the development plan already includes downstream factories on the same site. We welcome partners to build a vinyl chain with us.</p>
     </div>
     <div class="pvc-grid">
       <figure class="ph"><img src="img/pvc.jpg" alt="Stacked PVC pipes" loading="lazy"><figcaption>Pipes for water, irrigation and housing</figcaption></figure>
@@ -587,7 +605,7 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
   <div class="wrap">
     <div class="head">
       <div><div class="eyebrow">Logistics &amp; markets</div><h2>From our gate to your plant, wherever it is in the region.</h2></div>
-      <p class="proj">Semera sits on the main highway between Addis Ababa and Djibouti. The plan is a dedicated chemical tanker fleet, road and rail links to Ethiopian customers, and exports through the ports of Djibouti.</p>
+      <p class="proj">Semera sits on the main highway between Addis Ababa and Djibouti, about 200 km from the Port of Djibouti. The plan replaces imports in Ethiopia and exports to Djibouti, Kenya, Sudan and South Sudan, with duty-free access under COMESA and AfCFTA.</p>
       <p class="op">We run our own fleet of chemical tankers. We use the Addis Ababa–Djibouti railway for containerised loads and ship through the Port of Djibouti to export markets.</p>
     </div>
     <div class="logi">
@@ -615,12 +633,11 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
         </svg>
       </div>
       <div>
-        <div class="mrow"><b>Ethiopia</b><span>Industrial parks, utilities, sugar, textile and leather plants</span><em class="home">Home</em></div>
-        <div class="mrow"><b>Djibouti</b><span><span class="proj">About 80,000 t/yr caustic soda offtake being finalised</span><span class="op">Our largest export market: industry, ports and water treatment</span></span><em class="reg">Regional</em></div>
+        <div class="mrow"><b>Ethiopia</b><span>Import substitution for textiles, soap and detergents, paper and water treatment</span><em class="home">Home</em></div>
+        <div class="mrow"><b>Djibouti</b><span><span class="proj">Signed market and logistics MOU with Ayalou, covering about 80,000 t/yr</span><span class="op">Our largest export market: industry, ports and water treatment</span></span><em class="reg">Regional</em></div>
         <div class="mrow"><b>Kenya</b><span>Soap, detergent and water-treatment customers</span><em class="reg">Regional</em></div>
         <div class="mrow"><b>Sudan &amp; South Sudan</b><span>Sugar, oil, mining and municipal water</span><em class="reg">Regional</em></div>
-        <div class="mrow"><b>Somalia &amp; Somaliland</b><span>Water, sanitation and food processing</span><em class="reg">Regional</em></div>
-        <div class="mrow"><b>COMESA, AfCFTA, Gulf</b><span>Caustic flakes shipped by sea from Djibouti</span><em class="exp">Export</em></div>
+        <div class="mrow"><b>COMESA and AfCFTA</b><span>Duty-free regional trade; flakes shipped by sea from Djibouti</span><em class="exp">Export</em></div>
       </div>
     </div>
   </div>
@@ -653,20 +670,20 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
     <div>
       <div class="eyebrow" style="color:var(--lime)">Partner with us</div>
       <h2 style="margin-top:14px"><span class="proj">Help us build it.</span><span class="op">Build your plant next to ours.</span></h2>
-      <p class="proj">We are inviting engineering and construction firms, technology licensors, lenders, investors and future customers to join the project.</p>
+      <p class="proj">We are inviting financing partners, engineering and construction firms and technology licensors to join the project, and we welcome US partners.</p>
       <p class="op">We are looking for offtakers, distributors, investors and downstream manufacturers who want a reliable chemical supply in Ethiopia.</p>
       <div class="actions"><a class="btn lime" href="#contact">Talk to our team →</a></div>
     </div>
     <ul class="proj">
       <li><b>Engineering &amp; EPC:</b> feasibility validation, FEED, EPC or project management</li>
       <li><b>Technology:</b> ion-exchange membrane electrolysers and process licensing</li>
-      <li><b>Financing:</b> development finance, export credit agencies and commercial lenders</li>
+      <li><b>Financing:</b> project finance, equity, debt, export or supplier credit, or a joint venture</li>
       <li><b>Equity &amp; offtake:</b> strategic investors and long-term buyers of caustic soda and chlorine</li>
-      <li><b>Downstream:</b> PVC, soap and coagulant plants co-located on our chlorine</li>
+      <li><b>Downstream:</b> soap, detergent and PVC plants co-located on our site</li>
     </ul>
     <ul class="op">
       <li><b>Offtake:</b> long-term caustic soda and chlorine contracts</li>
-      <li><b>Co-location:</b> PVC, soap and coagulant plants on our site</li>
+      <li><b>Co-location:</b> soap, detergent and PVC plants on our site</li>
       <li><b>Distribution:</b> regional partners in Kenya, Sudan and Djibouti</li>
       <li><b>Careers:</b> chemical engineers, operators, lab and safety staff</li>
     </ul>
@@ -677,19 +694,23 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
   <div class="wrap contact">
     <div class="info">
       <div><div class="eyebrow">Contact</div><h2><span class="proj">Talk to the project team.</span><span class="op">Request a quote or a plant visit.</span></h2></div>
-      <div><h4>Head office</h4><p>Addis Ababa, Ethiopia<br>[Street address]</p></div>
+      <div><h4>Head office</h4><p>Addis Ababa, Ethiopia</p></div>
       <div><h4><span class="proj">Project site</span><span class="op">Plant</span></h4><p>Semera Industrial Zone, Afar Region, Ethiopia</p></div>
-      <div><h4><span class="proj">Project office</span><span class="op">Sales</span></h4><p><span id="mail">info@[company-domain].et</span><button class="copy" data-copy="mail">Copy</button></p><p><span id="tel">+251 11 000 0000</span><button class="copy" data-copy="tel">Copy</button></p></div>
+      <div><h4>Financing and partnerships</h4><p>Ahadu Consulting, exclusive project finance and strategic advisory representative<br>Araya Kebede, Managing Director</p><p><a id="mail" href="mailto:Araya.Kebede@ahaduconsulting.com">Araya.Kebede@ahaduconsulting.com</a><button class="copy" type="button" data-copy="mail">Copy</button></p></div>
     </div>
     <form id="quote" novalidate>
-      <label>Name<input id="f-name" placeholder="Full name"></label>
-      <label>Company<input id="f-co" placeholder="Company name"></label>
-      <label>Country<select id="f-country"><option>Ethiopia</option><option>Djibouti</option><option>Kenya</option><option>Sudan</option><option>South Sudan</option><option>Somalia / Somaliland</option><option>Other</option></select></label>
-      <label class="proj">Interest<select id="f-int"><option>EPC / engineering</option><option>Technology licensing</option><option>Financing</option><option>Equity investment</option><option>Offtake (future customer)</option><option>Downstream partnership</option><option>Salt supply</option><option>Careers</option><option>Other</option></select></label>
-      <label class="op">Product<select id="f-prod"><option>Caustic soda lye</option><option>Caustic soda flakes</option><option>Liquid chlorine</option><option>Hydrochloric acid</option><option>Sodium hypochlorite</option><option>Coagulants (PAC / ferric)</option><option>Hydrogen</option><option>Partnership / investment</option></select></label>
-      <label class="full">Message<textarea id="f-msg" placeholder="Tell us about your organisation and your interest in the project, or the product volumes you need"></textarea></label>
-      <button class="btn blue full" type="submit" style="justify-self:start">Send request</button>
-      <div class="sent" id="sent" hidden>This is a concept site, so messages are not sent yet. On the live site this form will go to our team.</div>
+      <label>Name <span class="req">*</span><input id="f-name" name="name" autocomplete="name" required></label>
+      <label>Email <span class="req">*</span><input id="f-email" name="email" type="email" autocomplete="email" required></label>
+      <label>Organisation<input id="f-co" name="organisation" autocomplete="organization"></label>
+      <label>Country<select id="f-country" name="country"><option>Ethiopia</option><option>Djibouti</option><option>Kenya</option><option>Sudan</option><option>South Sudan</option><option>United States</option><option>Other</option></select></label>
+      <label class="proj">Interest<select id="f-int" name="interest"><option>Financing</option><option>Equity investment</option><option>EPC / engineering</option><option>Technology licensing</option><option>Offtake (future customer)</option><option>Downstream partnership</option><option>Careers</option><option>Other</option></select></label>
+      <label class="op">Product<select id="f-prod" name="product"><option>Caustic soda lye</option><option>Caustic soda flakes</option><option>Liquid chlorine</option><option>Hydrochloric acid</option><option>Sodium hypochlorite</option><option>Hydrogen</option><option>Partnership / investment</option></select></label>
+      <label>Phone<input id="f-phone" name="phone" type="tel" autocomplete="tel"></label>
+      <label class="full">Message <span class="req">*</span><textarea id="f-msg" name="message" required placeholder="Tell us about your organisation and your interest in the project"></textarea></label>
+      <div class="hp" aria-hidden="true"><label>Leave this empty<input id="f-hp" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+      <button class="btn blue full" type="submit" id="f-send" style="justify-self:start">Send message</button>
+      <div class="sent" id="sent" role="status" hidden>Thank you. Your message has been sent, and we will reply by email.</div>
+      <div class="ferr" id="ferr" role="alert" hidden></div>
     </form>
   </div>
 </section>
@@ -699,36 +720,46 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
   <div class="wrap">
     <div class="foot">
       <div style="max-width:320px;display:flex;flex-direction:column;gap:14px">
-        <span class="brand"><svg class="mark"><use href="#logo"/></svg><span class="wm"><b>CAUSTIC <span>CHEMICAL</span></b><small>INDUSTRIES PLC</small></span></span>
+        <span class="brand"><svg class="mark"><use href="#logo"/></svg><span class="wm"><b><em data-co="w1">COSOTIC</em> <span data-co="w2">CHEMICALS</span></b><small data-co="w3">INDUSTRIES PLC</small></span></span>
         <p>Chlor-alkali products for Ethiopia, East Africa and beyond.</p>
         <p style="font-family:var(--ethi);font-weight:700;color:#fff">ለኢንዱስትሪ መሠረት</p>
       </div>
       <div class="cols">
         <div><h4>Company</h4><a class="proj" href="#status">Project status</a><a href="#plant"><span class="proj">The plant</span><span class="op">Our plant</span></a><a href="#process">How it works</a><a href="#safety">Safety</a><a href="#contact">Careers</a></div>
-        <div><h4>Products</h4><a href="#products">Caustic soda</a><a href="#products">Chlorine</a><a href="#products">Acids &amp; hypochlorite</a><a href="#products">Coagulants</a></div>
+        <div><h4>Products</h4><a href="#products">Caustic soda</a><a href="#products">Chlorine</a><a href="#products">Acids &amp; hypochlorite</a><a href="#products">Hydrogen</a></div>
         <div><h4>Markets</h4><a href="#markets">Ethiopia</a><a href="#markets">Regional</a><a href="#markets">Export</a></div>
       </div>
     </div>
-    <div class="fine">© 2026 Caustic Chemical Industries PLC · Concept website for internal review. <span class="proj">Project figures are planned and subject to feasibility, financing and approvals. Product splits and contacts are placeholders.</span><span class="op">Capacities, dates, certifications and contacts are placeholders.</span> Hero image is an architectural rendering. Other photos are Unsplash stock images, to be replaced with photos of our own plant and team.</div>
+    <div class="fine">© 2026 <span data-co="full">Cosotic Chemicals Industries PLC</span>. Project figures are estimates and subject to final engineering, financing and approvals. The hero image is an architectural rendering; video and other photos are illustrative.</div>
   </div>
 </footer>
 </div><!-- /.site-root -->
 
 <script>
 (function(){
+  // Company name: change it here and it updates everywhere on the page.
+  var COMPANY={full:'Cosotic Chemicals Industries PLC', w1:'COSOTIC', w2:'CHEMICALS', w3:'INDUSTRIES PLC'};
+  document.querySelectorAll('[data-co]').forEach(function(el){var v=COMPANY[el.getAttribute('data-co')];if(v)el.textContent=v});
+  document.title=COMPANY.full;
+
+  // Contact form: messages are delivered by FormSubmit to this address.
+  var FORM_TO='Araya.Kebede@ahaduconsulting.com';
+
   // Project milestones: update status here. done | prog | next | plan
   var MILESTONES=[
-    ['done','Company established','Caustic Chemical Industries PLC registered in Ethiopia'],
-    ['done','Government support','Institutional support from the Ministry of Industry'],
-    ['done','Site selected','Semera Industrial Zone, Afar Region'],
-    ['prog','Salt supply','Long-term supply arrangements for Afdera salt'],
-    ['prog','Djibouti offtake','About 80,000 t/yr of caustic soda, 40% of capacity, being finalised'],
-    ['prog','Financing','Financing structure and documentation, including the Commercial Bank of Ethiopia'],
-    ['prog','Technical and financial documentation','Updated studies and a detailed USD 450 million investment breakdown'],
-    ['next','EPC contractor and technology licensor','Selection of the engineering partner and membrane-cell technology'],
-    ['next','Management and technical team','Recruiting experienced chlor-alkali leadership and engineers'],
-    ['plan','Construction','Schedule being prepared with the EPC partner'],
-    ['plan','Commissioning and first production','Start-up and ramp-up to 200,000 t/yr']
+    ['done','Company established',COMPANY.full+' registered in Ethiopia'],
+    ['done','Feasibility study and business plan','Completed in 2025'],
+    ['done','Site allocated','Approved plot in the Semera Industrial Zone, Afar Region'],
+    ['done','Site studies','Geotechnical investigation and Environmental Impact Assessment, with management and emergency-response plans'],
+    ['done','Community consultations','Community and stakeholder consultations, March to May 2025'],
+    ['done','Government support','Signed letter of support from the Ministry of Industry, confirming a domestic market for 200,000 t/yr'],
+    ['done','Djibouti market and logistics','Signed MOU with Ayalou, endorsed by a Djibouti government office, covering about 80,000 t/yr'],
+    ['done','Salt supply','Agreement with the Afdera Salt Producers Cooperative Union for Lake Afdera salt'],
+    ['prog','Financing','Project finance, equity, debt and export-credit partners (Q4 2026)'],
+    ['prog','EPC contractor and technology licensor','Selection under way (Q4 2026)'],
+    ['next','Basic engineering design','Target Q1 2027'],
+    ['plan','Construction and commissioning','About 24 months'],
+    ['plan','Plant start-up','About 2029, then ramp-up to 200,000 t/yr']
   ];
   var LBL={done:'Done',prog:'In progress',next:'Next',plan:'Planned'};
   var mg=document.getElementById('mgrid');
@@ -737,6 +768,26 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
     var c={};MILESTONES.forEach(function(m){c[m[0]]=(c[m[0]]||0)+1});
     document.getElementById('msSum').innerHTML=['done','prog','next','plan'].map(function(k){return '<span class="st '+k+'" style="font:700 11px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;padding:7px 10px;border-radius:999px">'+(c[k]||0)+' '+LBL[k]+'</span>'}).join('');
   }
+  // Hero background video: four short clips play in turn on larger screens.
+  (function(){
+    var vids=[].slice.call(document.querySelectorAll('.hero-vid video'));
+    var calm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var saver=navigator.connection&&navigator.connection.saveData;
+    if(!vids.length||calm||saver||window.innerWidth<700)return;
+    var hero=document.querySelector('.hero'),HOLD=7000;
+    function load(v){if(!v.getAttribute('src')){v.src=v.getAttribute('data-src');v.load()}}
+    function show(n){
+      var v=vids[n];load(v);
+      try{v.currentTime=0}catch(e){}
+      v.addEventListener('playing',function on(){v.removeEventListener('playing',on);v.classList.add('on');hero.classList.add('has-video');
+        vids.forEach(function(o){if(o!==v){o.classList.remove('on');setTimeout(function(){if(!o.classList.contains('on'))o.pause()},1300)}})});
+      var p=v.play();if(p&&p.catch)p.catch(function(){});
+      load(vids[(n+1)%vids.length]);
+      setTimeout(function(){show((n+1)%vids.length)},HOLD);
+    }
+    show(0);
+  })();
+
   var btn=document.getElementById('menuBtn'),links=document.getElementById('navLinks');
   btn.addEventListener('click',function(){var o=links.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
   links.addEventListener('click',function(e){if(e.target.tagName==='A'){links.classList.remove('open');btn.setAttribute('aria-expanded',false)}});
@@ -759,22 +810,22 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
   bubbles('clBubbles',118,245,'#5FE39A',22,true);
   bubbles('hBubbles',278,402,'#D4F542',26,false);
 
-  var L={naoh:'NaOH',cl:'Cl₂',hcl:'HCl',hypo:'NaOCl',coag:'PAC',h2:'H₂'};
+  var L={naoh:'NaOH',cl:'Cl₂',hcl:'HCl',hypo:'NaOCl',h2:'H₂'};
   var I=[
     ['PVC & vinyls','Pipes, cables, profiles and films made from chlorine-based vinyl chloride.',['cl']],
     ['Soap & detergents','Saponification of oils and fats. Caustic soda is the main input.',['naoh']],
-    ['Textiles & garments','Mercerising cotton, scouring, bleaching, and treating dye-house effluent.',['naoh','hypo','hcl','coag']],
+    ['Textiles & garments','Mercerising cotton, scouring, bleaching, and treating dye-house effluent.',['naoh','hypo','hcl']],
     ['Leather & tanning','Liming, pickling and pH adjustment for hides and skins.',['naoh','hcl']],
     ['Sugar & ethanol','Juice clarification, evaporator descaling and ion-exchange regeneration.',['naoh','hcl']],
     ['Edible oil refining','Neutralising free fatty acids. Hydrogenation for margarine and shortening.',['naoh','h2']],
-    ['Pulp & paper','Pulping, bleaching and recycled-fibre de-inking.',['naoh','hypo','coag']],
+    ['Pulp & paper','Pulping, bleaching and recycled-fibre de-inking.',['naoh','hypo']],
     ['Pharmaceuticals','Synthesis, salt formation and process pH control.',['hcl','naoh','cl']],
     ['Food & beverage','Bottle washing, clean-in-place systems and brewery sanitation.',['naoh','hypo','hcl']],
     ['Mining & metals','Gold and potash processing, steel pickling, alumina refining.',['naoh','hcl']],
     ['Petroleum & biofuels','Fuel sweetening and biodiesel catalyst.',['naoh']],
     ['Agrochemicals','Chlorinated intermediates for crop protection products.',['cl','hcl']],
     ['Health & sanitation','Hospital disinfection, household bleach and outbreak response.',['hypo']],
-    ['Industrial-park effluent','Coagulation and neutralisation in shared wastewater plants.',['coag','naoh','hcl']],
+    ['Industrial-park effluent','Neutralisation and disinfection in shared wastewater plants.',['naoh','hcl','hypo']],
     ['Clean hydrogen','Industrial gas supply and a starting point for fuel cells.',['h2']]
   ];
   var grid=document.getElementById('igrid');
@@ -796,7 +847,28 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
       try{navigator.clipboard.writeText(el.textContent).then(function(){b.textContent='Copied'},sel)}catch(e){sel()}
     });
   });
-  document.getElementById('quote').addEventListener('submit',function(e){e.preventDefault();document.getElementById('sent').hidden=false});
+  var form=document.getElementById('quote'),sendBtn=document.getElementById('f-send'),okBox=document.getElementById('sent'),errBox=document.getElementById('ferr');
+  function v(id){var el=document.getElementById(id);return el?el.value.trim():''}
+  function fail(msg){errBox.innerHTML=msg+' You can also email us at <a href="mailto:'+FORM_TO+'">'+FORM_TO+'</a>.';errBox.hidden=false}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();okBox.hidden=true;errBox.hidden=true;
+    ['f-name','f-email','f-msg'].forEach(function(id){document.getElementById(id).setAttribute('data-touched','1')});
+    if(!form.checkValidity()){fail('Please fill in your name, a valid email address and a message.');return}
+    if(v('f-hp')){okBox.hidden=false;form.reset();return}
+    var operating=document.querySelector('.site-root').getAttribute('data-stage')==='operating';
+    var data={name:v('f-name'),email:v('f-email'),organisation:v('f-co'),country:v('f-country'),phone:v('f-phone'),message:v('f-msg'),
+      _subject:'Website enquiry: '+(operating?v('f-prod'):v('f-int'))+' ('+v('f-name')+')',_template:'table',_captcha:'false',_replyto:v('f-email')};
+    if(operating){data.product=v('f-prod')}else{data.interest=v('f-int')}
+    sendBtn.disabled=true;sendBtn.textContent='Sending…';
+    fetch('https://formsubmit.co/ajax/'+FORM_TO,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+      .then(function(r){return r.json().catch(function(){return {}}).then(function(j){return {ok:r.ok,j:j}})})
+      .then(function(res){
+        if(res.ok&&(res.j.success===true||res.j.success==='true')){okBox.hidden=false;form.reset();form.querySelectorAll('[data-touched]').forEach(function(el){el.removeAttribute('data-touched')})}
+        else{fail('Sorry, your message could not be sent right now.')}
+      })
+      .catch(function(){fail('Sorry, your message could not be sent right now.')})
+      .then(function(){sendBtn.disabled=false;sendBtn.textContent='Send message'});
+  });
 })();
 </script>
 </body>
