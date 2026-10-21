@@ -706,7 +706,7 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
       <div><div class="eyebrow">Contact</div><h2><span class="proj">Talk to the project team.</span><span class="op">Request a quote or a plant visit.</span></h2></div>
       <div><h4>Head office</h4><p>Addis Ababa, Ethiopia</p></div>
       <div><h4><span class="proj">Project site</span><span class="op">Plant</span></h4><p>Semera Industrial Zone, Afar Region, Ethiopia</p></div>
-      <div><h4>Project strategic advisor</h4><p><strong>Ahadu Consulting</strong></p><p>For partnership enquiries, complete the form or contact the advisor's representative, Araya Kebede, Managing Director, at <a id="mail" href="mailto:Araya.Kebede@ahaduconsulting.com">Araya.Kebede@ahaduconsulting.com</a><button class="copy" type="button" data-copy="mail">Copy</button></p></div>
+      <div><h4>Project strategic advisor</h4><p><a href="https://ahaduconsulting.com" target="_blank" rel="noopener"><strong>Ahadu Consulting</strong></a></p><p>For partnership and investment enquiries, please complete the form. Our advisor will reply by email.</p></div>
     </div>
     <form id="quote" novalidate>
       <label>Name <span class="req">*</span><input id="f-name" name="name" autocomplete="name" required></label>
@@ -859,7 +859,7 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
   });
   var form=document.getElementById('quote'),sendBtn=document.getElementById('f-send'),okBox=document.getElementById('sent'),errBox=document.getElementById('ferr');
   function v(id){var el=document.getElementById(id);return el?el.value.trim():''}
-  function fail(msg){errBox.innerHTML=msg+' You can also email us at <a href="mailto:'+FORM_TO+'">'+FORM_TO+'</a>.';errBox.hidden=false}
+  function fail(msg){errBox.textContent=msg;errBox.hidden=false}
   form.addEventListener('submit',function(e){
     e.preventDefault();okBox.hidden=true;errBox.hidden=true;
     ['f-name','f-email','f-msg'].forEach(function(id){document.getElementById(id).setAttribute('data-touched','1')});
@@ -874,9 +874,9 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
       .then(function(r){return r.json().catch(function(){return {}}).then(function(j){return {ok:r.ok,j:j}})})
       .then(function(res){
         if(res.ok&&(res.j.success===true||res.j.success==='true')){okBox.hidden=false;form.reset();form.querySelectorAll('[data-touched]').forEach(function(el){el.removeAttribute('data-touched')})}
-        else{fail('Sorry, your message could not be sent right now.')}
+        else{fail('Sorry, your message could not be sent right now. Please try again in a few minutes.')}
       })
-      .catch(function(){fail('Sorry, your message could not be sent right now.')})
+      .catch(function(){fail('Sorry, your message could not be sent right now. Please try again in a few minutes.')})
       .then(function(){sendBtn.disabled=false;sendBtn.textContent='Send message'});
   });
 })();
