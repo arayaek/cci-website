@@ -12,12 +12,12 @@ Static website (HTML, CSS and a little JavaScript) for the 200,000 t/yr chlor-al
 | What | Where |
 | --- | --- |
 | Company name, used everywhere on the page | `var COMPANY = {...}` |
-| Address that receives contact-form messages | `var FORM_TO = '...'` |
+| Contact-form ID (FormSubmit; delivers to the advisor's inbox) | `var FORM_ID = '...'` |
 | Project milestones and their status (`done`, `prog`, `next`, `plan`) | `var MILESTONES = [...]` |
 
 ## Contact form
 
-The form sends messages through [FormSubmit](https://formsubmit.co) to the `FORM_TO` address. The **first** submission triggers an activation email from FormSubmit to that address. Click **Activate Form** in it once; after that, messages are delivered normally.
+The form sends messages through [FormSubmit](https://formsubmit.co) to the advisor's inbox using the `FORM_ID`. The **first** submission triggers an activation email from FormSubmit to that address. Click **Activate Form** in it once; after that, messages are delivered normally.
 
 ## Project vs. operating-company mode
 

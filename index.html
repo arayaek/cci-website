@@ -752,8 +752,8 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
   document.querySelectorAll('[data-co]').forEach(function(el){var v=COMPANY[el.getAttribute('data-co')];if(v)el.textContent=v});
   document.title=COMPANY.full;
 
-  // Contact form: messages are delivered by FormSubmit to this address.
-  var FORM_TO='Araya.Kebede@ahaduconsulting.com';
+  // Contact form: FormSubmit form ID (delivers to the advisor's inbox; the address itself is kept out of the page).
+  var FORM_ID='70c38d2a9036515689944b37b7d357e2';
 
   // Project milestones: update status here. done | prog | next | plan
   var MILESTONES=[
@@ -872,7 +872,7 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
     sendBtn.disabled=true;sendBtn.textContent='Sending…';
     var ctl=window.AbortController?new AbortController():null,slow=false;
     var timer=setTimeout(function(){slow=true;if(ctl)ctl.abort()},25000);
-    fetch('https://formsubmit.co/ajax/'+FORM_TO,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data),signal:ctl?ctl.signal:undefined})
+    fetch('https://formsubmit.co/ajax/'+FORM_ID,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data),signal:ctl?ctl.signal:undefined})
       .then(function(r){return r.json().catch(function(){return {}}).then(function(j){return {ok:r.ok,j:j}})})
       .then(function(res){
         if(res.ok&&(res.j.success===true||res.j.success==='true')){okBox.hidden=false;form.reset();form.querySelectorAll('[data-touched]').forEach(function(el){el.removeAttribute('data-touched')})}
