@@ -4,7 +4,7 @@ Static website (HTML, CSS and a little JavaScript) for the 200,000 t/yr chlor-al
 
 - `index.html` — the whole site
 - `img/` — hero rendering and illustrative photos (Unsplash and Pexels licences)
-- `video/` — four short hero background clips (Pexels licence)
+- `video/` — six 7-second hero background clips (Pexels licence)
 - `favicon.svg` — the logo mark
 
 ## Common edits (near the top of the script at the bottom of `index.html`)

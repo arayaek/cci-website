@@ -384,9 +384,11 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
   </svg>
   <div class="hero-vid" aria-hidden="true">
     <video muted playsinline preload="none" data-src="video/hero-1-plant.mp4"></video>
-    <video muted playsinline preload="none" data-src="video/hero-2-production.mp4"></video>
-    <video muted playsinline preload="none" data-src="video/hero-3-lab.mp4"></video>
-    <video muted playsinline preload="none" data-src="video/hero-4-trucks.mp4"></video>
+    <video muted playsinline preload="none" data-src="video/hero-2-process.mp4"></video>
+    <video muted playsinline preload="none" data-src="video/hero-3-trucks.mp4"></video>
+    <video muted playsinline preload="none" data-src="video/hero-4-port.mp4"></video>
+    <video muted playsinline preload="none" data-src="video/hero-5-water.mp4"></video>
+    <video muted playsinline preload="none" data-src="video/hero-6-salt.mp4"></video>
   </div>
   <span class="vid-note">Illustrative footage</span>
   <div class="wrap hero-in">
@@ -768,13 +770,13 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
     var c={};MILESTONES.forEach(function(m){c[m[0]]=(c[m[0]]||0)+1});
     document.getElementById('msSum').innerHTML=['done','prog','next','plan'].map(function(k){return '<span class="st '+k+'" style="font:700 11px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;padding:7px 10px;border-radius:999px">'+(c[k]||0)+' '+LBL[k]+'</span>'}).join('');
   }
-  // Hero background video: four short clips play in turn on larger screens.
+  // Hero background video: six 7-second clips play in turn on larger screens.
   (function(){
     var vids=[].slice.call(document.querySelectorAll('.hero-vid video'));
     var calm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
     var saver=navigator.connection&&navigator.connection.saveData;
     if(!vids.length||calm||saver||window.innerWidth<700)return;
-    var hero=document.querySelector('.hero'),HOLD=7000;
+    var hero=document.querySelector('.hero'),HOLD=6000;
     function load(v){if(!v.getAttribute('src')){v.src=v.getAttribute('data-src');v.load()}}
     function show(n){
       var v=vids[n];load(v);
