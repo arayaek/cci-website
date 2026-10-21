@@ -709,14 +709,14 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
       <div><h4>Project strategic advisor</h4><p><a href="https://ahaduconsulting.com" target="_blank" rel="noopener"><strong>Ahadu Consulting</strong></a></p><p>For partnership and investment enquiries, please complete the form. Our advisor will reply by email.</p></div>
     </div>
     <form id="quote" novalidate>
-      <label>Name <span class="req">*</span><input id="f-name" name="name" autocomplete="name" required></label>
-      <label>Email <span class="req">*</span><input id="f-email" name="email" type="email" autocomplete="email" required></label>
+      <label><span>Name <span class="req">*</span></span><input id="f-name" name="name" autocomplete="name" required></label>
+      <label><span>Email <span class="req">*</span></span><input id="f-email" name="email" type="email" autocomplete="email" required></label>
       <label>Organisation<input id="f-co" name="organisation" autocomplete="organization"></label>
       <label>Country<select id="f-country" name="country"><option>Ethiopia</option><option>Djibouti</option><option>Kenya</option><option>Sudan</option><option>South Sudan</option><option>United States</option><option>Other</option></select></label>
       <label class="proj">Interest<select id="f-int" name="interest"><option>Financing</option><option>Equity investment</option><option>EPC / engineering</option><option>Technology licensing</option><option>Offtake (future customer)</option><option>Downstream partnership</option><option>Careers</option><option>Other</option></select></label>
       <label class="op">Product<select id="f-prod" name="product"><option>Caustic soda lye</option><option>Caustic soda flakes</option><option>Liquid chlorine</option><option>Hydrochloric acid</option><option>Sodium hypochlorite</option><option>Hydrogen</option><option>Partnership / investment</option></select></label>
       <label>Phone<input id="f-phone" name="phone" type="tel" autocomplete="tel"></label>
-      <label class="full">Message <span class="req">*</span><textarea id="f-msg" name="message" required placeholder="Tell us about your organisation and your interest in the project"></textarea></label>
+      <label class="full"><span>Message <span class="req">*</span></span><textarea id="f-msg" name="message" required placeholder="Tell us about your organisation and your interest in the project"></textarea></label>
       <div class="hp" aria-hidden="true"><label>Leave this empty<input id="f-hp" name="_honey" tabindex="-1" autocomplete="off"></label></div>
       <button class="btn blue full" type="submit" id="f-send" style="justify-self:start">Send message</button>
       <div class="sent" id="sent" role="status" hidden>Thank you. Your message has been sent, and we will reply by email.</div>
@@ -861,7 +861,7 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
   function v(id){var el=document.getElementById(id);return el?el.value.trim():''}
   function fail(msg){errBox.textContent=msg;errBox.hidden=false}
   form.addEventListener('submit',function(e){
-    e.preventDefault();okBox.hidden=true;errBox.hidden=true;
+    e.preventDefault();okBox.hidden=true;errBox.hidden=true;okBox.textContent='Thank you. Your message has been sent, and we will reply by email.';
     ['f-name','f-email','f-msg'].forEach(function(id){document.getElementById(id).setAttribute('data-touched','1')});
     if(!form.checkValidity()){fail('Please fill in your name, a valid email address and a message.');return}
     if(v('f-hp')){okBox.hidden=false;form.reset();return}
@@ -870,14 +870,19 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
       _subject:'Website enquiry: '+(operating?v('f-prod'):v('f-int'))+' ('+v('f-name')+')',_template:'table',_captcha:'false',_replyto:v('f-email')};
     if(operating){data.product=v('f-prod')}else{data.interest=v('f-int')}
     sendBtn.disabled=true;sendBtn.textContent='Sending…';
-    fetch('https://formsubmit.co/ajax/'+FORM_TO,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+    var ctl=window.AbortController?new AbortController():null,slow=false;
+    var timer=setTimeout(function(){slow=true;if(ctl)ctl.abort()},25000);
+    fetch('https://formsubmit.co/ajax/'+FORM_TO,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data),signal:ctl?ctl.signal:undefined})
       .then(function(r){return r.json().catch(function(){return {}}).then(function(j){return {ok:r.ok,j:j}})})
       .then(function(res){
         if(res.ok&&(res.j.success===true||res.j.success==='true')){okBox.hidden=false;form.reset();form.querySelectorAll('[data-touched]').forEach(function(el){el.removeAttribute('data-touched')})}
         else{fail('Sorry, your message could not be sent right now. Please try again in a few minutes.')}
       })
-      .catch(function(){fail('Sorry, your message could not be sent right now. Please try again in a few minutes.')})
-      .then(function(){sendBtn.disabled=false;sendBtn.textContent='Send message'});
+      .catch(function(){
+        if(slow){okBox.textContent='Thank you. The mail service is slow right now, but your message has most likely been delivered. If you do not hear from us within two working days, please send it again.';okBox.hidden=false;form.reset()}
+        else{fail('Sorry, your message could not be sent right now. Please try again in a few minutes.')}
+      })
+      .then(function(){clearTimeout(timer);sendBtn.disabled=false;sendBtn.textContent='Send message'});
   });
 })();
 </script>
