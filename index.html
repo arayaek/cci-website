@@ -93,7 +93,8 @@ footer .brand .mark{color:#fff}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
   linear-gradient(90deg,rgba(4,22,43,.94) 0%,rgba(4,22,43,.78) 38%,rgba(4,22,43,.18) 72%,rgba(4,22,43,.05) 100%),
   linear-gradient(0deg,rgba(4,22,43,.9) 0%,rgba(4,22,43,0) 38%)}
-.hero-in{min-height:min(84vh,760px);display:flex;flex-direction:column;justify-content:center;padding-block:clamp(64px,9vw,120px) 56px;position:relative}
+.hero-in{min-height:min(84vh,760px);display:grid;grid-template-columns:minmax(0,1fr) auto;align-content:center;column-gap:24px;padding-block:clamp(56px,7vw,96px);position:relative}
+.hero-in>.hero-copy{grid-column:1;grid-row:1}
 .hero-copy{max-width:640px}
 .hero .eyebrow{color:var(--lime)}
 .hero h1{color:#fff;font-size:clamp(40px,6vw,78px);font-weight:800;letter-spacing:-.035em;margin-top:18px}
@@ -102,11 +103,11 @@ footer .brand .mark{color:#fff}
 .amh{font:700 21px var(--ethi);margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;align-items:baseline}
 .amh span{font:600 11.5px var(--body);letter-spacing:.16em;color:#9FB3CB}
 .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-.tag{position:absolute;right:clamp(16px,4vw,40px);top:clamp(24px,4vw,44px);background:var(--lime);color:var(--on-lime);font:800 13px/1.45 var(--display);letter-spacing:.08em;padding:16px 22px}
+.tag{grid-column:2;grid-row:1;align-self:start;margin-top:32px;background:var(--lime);color:var(--on-lime);font:800 13px/1.45 var(--display);letter-spacing:.08em;padding:16px 22px}
 .live{display:inline-flex;align-items:center;gap:8px;font:600 12.5px var(--body);color:#D3DEEC;margin-top:26px}
 .live i{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(31,180,102,.7);animation:pulse 2s infinite}
 @keyframes pulse{70%{box-shadow:0 0 0 10px rgba(31,180,102,0)}100%{box-shadow:0 0 0 0 rgba(31,180,102,0)}}
-@media (max-width:700px){.tag{position:static;align-self:flex-start;margin-bottom:22px;font-size:11.5px;padding:12px 16px}.hero-in{padding-top:40px}.hero::before{background:linear-gradient(0deg,rgba(4,22,43,.95) 10%,rgba(4,22,43,.72) 100%)}}
+@media (max-width:700px){.hero-in{grid-template-columns:1fr}.tag{grid-column:1;grid-row:1;justify-self:start;margin:0 0 22px;font-size:11.5px;padding:12px 16px}.hero-in>.hero-copy{grid-row:2}.hero::before{background:linear-gradient(0deg,rgba(4,22,43,.95) 10%,rgba(4,22,43,.72) 100%)}}
 
 /* stat band */
 .stats{display:grid;grid-template-columns:repeat(4,1fr)}
@@ -191,6 +192,12 @@ figure{margin:0}
 .c-coag .top{background:var(--violet);color:#fff}
 .c-h2 .top{background:var(--lime);color:var(--on-lime)}
 .c-h2 .nm,.c-flk .nm{color:inherit}
+.prod.next{background:linear-gradient(160deg,var(--soft),var(--surface));border:2px dashed var(--blue);padding:22px;gap:12px}
+.prod.next .eyebrow{color:var(--blue)}
+.prod.next h3{font-size:21px}
+.prod.next p{font-size:13.5px;color:var(--muted)}
+.prod.next ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.prod.next li{font:600 12.5px/1 var(--body);padding:7px 10px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--ink)}
 .prod.more{background:var(--navy);border-color:var(--navy);color:#fff;padding:22px;justify-content:space-between;gap:18px}
 .prod.more h3{color:#fff;font-size:22px}
 .prod.more p{color:#C6D4E5;font-size:14.5px}
@@ -411,7 +418,7 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
   </div>
 </section>
 <div class="stats proj" aria-label="Key project figures">
-  <div class="stat st1"><span class="n">200,000<small>t/yr</small></span><span class="l">Caustic soda plant being built. Some units may be commissioned in phases.</span></div>
+  <div class="stat st1"><span class="n">200,000<small>t/yr</small></span><span class="l">Caustic soda plant being built</span></div>
   <div class="stat st2"><span class="n">USD 450M</span><span class="l">Total planned investment, including downstream factories</span></div>
   <div class="stat st3"><span class="n">~200<small>km</small></span><span class="l">From the Port of Djibouti, for imports and exports</span></div>
   <div class="stat st4"><span class="n">290M<small>t</small></span><span class="l">Estimated high-purity salt at Lake Afdera</span></div>
@@ -543,6 +550,7 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
         <dl><dt>Grade</dt><dd>10–12% available chlorine</dd><dt>Pack</dt><dd>Tankers, IBCs, 20 L jerrycans</dd><dt>For</dt><dd>Drinking water, hospitals, bleach, textiles</dd></dl></article>
       <article class="prod c-h2"><div class="top"><div class="row"><span class="f">H<sub>2</sub></span></div><span class="nm">Hydrogen</span></div>
         <dl><dt>Grade</dt><dd>99.9%, compressed on request</dd><dt>Pack</dt><dd>Cylinder bundles, captive use</dd><dt>For</dt><dd>Oil hydrogenation, glass, labs, fuel cells</dd></dl></article>
+      <article class="prod next"><div class="eyebrow">Coming next</div><h3>Downstream and future products</h3><p>The development plan adds factories on the same site that turn our chemicals into finished goods.</p><ul><li>Soap and detergents</li><li>Household bleach</li><li>Water-treatment coagulants</li><li>PVC and vinyls, with a partner</li><li>Calcium hypochlorite</li></ul><p>Subject to final design and market demand.</p></article>
       <article class="prod more proj"><h3>Want supply from day one?</h3><p>We are agreeing long-term offtake ahead of start-up. Early offtakers can shape grades, packaging and delivery.</p><a class="btn lime" href="#contact">Discuss offtake →</a></article>
       <article class="prod more op"><h3>Need a custom grade or a long-term supply contract?</h3><p>Our technical sales team can match the concentration, packaging and delivery schedule to your plant.</p><a class="btn lime" href="#contact">Talk to sales →</a></article>
     </div>
@@ -698,7 +706,7 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
       <div><div class="eyebrow">Contact</div><h2><span class="proj">Talk to the project team.</span><span class="op">Request a quote or a plant visit.</span></h2></div>
       <div><h4>Head office</h4><p>Addis Ababa, Ethiopia</p></div>
       <div><h4><span class="proj">Project site</span><span class="op">Plant</span></h4><p>Semera Industrial Zone, Afar Region, Ethiopia</p></div>
-      <div><h4>Financing and partnerships</h4><p>Ahadu Consulting, exclusive project finance and strategic advisory representative<br>Araya Kebede, Managing Director</p><p><a id="mail" href="mailto:Araya.Kebede@ahaduconsulting.com">Araya.Kebede@ahaduconsulting.com</a><button class="copy" type="button" data-copy="mail">Copy</button></p></div>
+      <div><h4>Project strategic advisor</h4><p><strong>Ahadu Consulting</strong></p><p>For partnership enquiries, complete the form or contact the advisor's representative, Araya Kebede, Managing Director, at <a id="mail" href="mailto:Araya.Kebede@ahaduconsulting.com">Araya.Kebede@ahaduconsulting.com</a><button class="copy" type="button" data-copy="mail">Copy</button></p></div>
     </div>
     <form id="quote" novalidate>
       <label>Name <span class="req">*</span><input id="f-name" name="name" autocomplete="name" required></label>
@@ -732,7 +740,7 @@ footer{background:var(--navy-3);color:#B9C8DA;padding-block:48px 28px;font-size:
         <div><h4>Markets</h4><a href="#markets">Ethiopia</a><a href="#markets">Regional</a><a href="#markets">Export</a></div>
       </div>
     </div>
-    <div class="fine">© 2026 <span data-co="full">Cosotic Chemicals Industries PLC</span>. Project figures are estimates and subject to final engineering, financing and approvals. The hero image is an architectural rendering; video and other photos are illustrative.</div>
+    <div class="fine">© 2026 <span data-co="full">Cosotic Chemicals Industries PLC</span>. Project figures are estimates and subject to final engineering, financing and approvals. Video and photos are illustrative.</div>
   </div>
 </footer>
 </div><!-- /.site-root -->
